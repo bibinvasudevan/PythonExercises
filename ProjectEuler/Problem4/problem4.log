@@ -1,0 +1,3 @@
+ERROR:root:Invalid max range: 3 
+Usage: Integer value only 
+INFO:root:Largest palindrom is 906609

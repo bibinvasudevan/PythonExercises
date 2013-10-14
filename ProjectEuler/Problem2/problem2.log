@@ -1,0 +1,3 @@
+ERROR:root:Invalid max range: t 
+Usage: Integer value only 
+INFO:root:The sum of even fibanoci in 34 is 44
