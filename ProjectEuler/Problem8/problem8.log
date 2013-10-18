@@ -1,0 +1,5 @@
+INFO:root:The greatest product is  18816
+INFO:root:The greatest product is  25088
+ERROR:root:Invalid number:  5656565656565656 
+Usage: Integer value only 
+INFO:root:The greatest product is  31752
