@@ -1,0 +1,1073 @@
+<!DOCTYPE html>
+<!--[if IE 7 | IE 8]>
+<html class="ie" lang="en-US" prefix="og: http://ogp.me/ns#">
+<![endif]-->
+<!--[if !(IE 7) | !(IE 8)  ]><!-->
+<html prefix="og: http://ogp.me/ns#" lang="en-US"><!--<![endif]--><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<title>Virtualenv Tutorial | SimonOnSoftware</title>
+<link rel="profile" href="http://gmpg.org/xfn/11">
+<link rel="pingback" href="http://simononsoftware.com/xmlrpc.php">
+<!--[if lt IE 9]>
+<script src="http://simononsoftware.com/wp-content/themes/twentytwelve/js/html5.js" type="text/javascript"></script>
+<![endif]-->
+
+<!-- This site is optimized with the Yoast WordPress SEO plugin v1.4.18 - http://yoast.com/wordpress/seo/ -->
+<link rel="canonical" href="http://simononsoftware.com/virtualenv-tutorial/">
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Virtualenv Tutorial - SimonOnSoftware">
+<meta property="og:description" content="What is Virtualenv Virtualenv is a great piece of software. It allows to create some virtual environments that have many different versions of Python across the whole system and having different sets of libraries. Tools Versions While creating this tutorial I used following tools and versions: virtualenv – 1.4.8 Python – 2.6.5 Ubuntu 10.04 64 […]">
+<meta property="og:url" content="http://simononsoftware.com/virtualenv-tutorial/">
+<meta property="og:site_name" content="SimonOnSoftware">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@simongl">
+<meta name="twitter:domain" content="SimonOnSoftware">
+<meta name="twitter:creator" content="@simongl">
+<!-- / Yoast WordPress SEO plugin. -->
+
+<link rel="alternate" type="application/rss+xml" title="SimonOnSoftware » Feed" href="http://simononsoftware.com/feed/">
+<link rel="alternate" type="application/rss+xml" title="SimonOnSoftware » Comments Feed" href="http://simononsoftware.com/comments/feed/">
+<link rel="alternate" type="application/rss+xml" title="SimonOnSoftware » Virtualenv Tutorial Comments Feed" href="http://simononsoftware.com/virtualenv-tutorial/feed/">
+<link rel="stylesheet" id="contact-form-7-css" href="Virtualenv%20Tutorial%20%7C%20SimonOnSoftware_files/styles.css" type="text/css" media="all">
+<link rel="stylesheet" id="twentytwelve-fonts-css" href="Virtualenv%20Tutorial%20%7C%20SimonOnSoftware_files/css.css" type="text/css" media="all">
+<link rel="stylesheet" id="twentytwelve-style-css" href="Virtualenv%20Tutorial%20%7C%20SimonOnSoftware_files/style.css" type="text/css" media="all">
+<script src="Virtualenv%20Tutorial%20%7C%20SimonOnSoftware_files/ga.js" async="" type="text/javascript"></script><script type="text/javascript" src="Virtualenv%20Tutorial%20%7C%20SimonOnSoftware_files/jquery.js"></script>
+<script type="text/javascript" src="Virtualenv%20Tutorial%20%7C%20SimonOnSoftware_files/jquery-migrate.js"></script>
+<script type="text/javascript" src="Virtualenv%20Tutorial%20%7C%20SimonOnSoftware_files/external-tracking.js"></script>
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://simononsoftware.com/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://simononsoftware.com/wp-includes/wlwmanifest.xml"> 
+<meta name="generator" content="WordPress 3.6.1">
+<link rel="shortlink" href="http://simononsoftware.com/?p=801">
+	<link type="text/css" rel="stylesheet" href="Virtualenv%20Tutorial%20%7C%20SimonOnSoftware_files/shCore.css">
+	<link type="text/css" rel="stylesheet" href="Virtualenv%20Tutorial%20%7C%20SimonOnSoftware_files/shThemeDefault.css">
+	<script type="text/javascript" src="Virtualenv%20Tutorial%20%7C%20SimonOnSoftware_files/shCore.js"></script>
+	<script type="text/javascript" src="Virtualenv%20Tutorial%20%7C%20SimonOnSoftware_files/shBrushBash.js"></script>
+	<script type="text/javascript" src="Virtualenv%20Tutorial%20%7C%20SimonOnSoftware_files/shBrushCpp.js"></script>
+	<script type="text/javascript" src="Virtualenv%20Tutorial%20%7C%20SimonOnSoftware_files/shBrushCSharp.js"></script>
+	<script type="text/javascript" src="Virtualenv%20Tutorial%20%7C%20SimonOnSoftware_files/shBrushCss.js"></script>
+	<script type="text/javascript" src="Virtualenv%20Tutorial%20%7C%20SimonOnSoftware_files/shBrushDelphi.js"></script>
+	<script type="text/javascript" src="Virtualenv%20Tutorial%20%7C%20SimonOnSoftware_files/shBrushDiff.js"></script>
+	<script type="text/javascript" src="Virtualenv%20Tutorial%20%7C%20SimonOnSoftware_files/shBrushGroovy.js"></script>
+	<script type="text/javascript" src="Virtualenv%20Tutorial%20%7C%20SimonOnSoftware_files/shBrushJava.js"></script>
+	<script type="text/javascript" src="Virtualenv%20Tutorial%20%7C%20SimonOnSoftware_files/shBrushJScript.js"></script>
+	<script type="text/javascript" src="Virtualenv%20Tutorial%20%7C%20SimonOnSoftware_files/shBrushPerl.js"></script>
+	<script type="text/javascript" src="Virtualenv%20Tutorial%20%7C%20SimonOnSoftware_files/shBrushPhp.js"></script>
+	<script type="text/javascript" src="Virtualenv%20Tutorial%20%7C%20SimonOnSoftware_files/shBrushPlain.js"></script>
+	<script type="text/javascript" src="Virtualenv%20Tutorial%20%7C%20SimonOnSoftware_files/shBrushPython.js"></script>
+	<script type="text/javascript" src="Virtualenv%20Tutorial%20%7C%20SimonOnSoftware_files/shBrushRuby.js"></script>
+	<script type="text/javascript" src="Virtualenv%20Tutorial%20%7C%20SimonOnSoftware_files/shBrushScala.js"></script>
+	<script type="text/javascript" src="Virtualenv%20Tutorial%20%7C%20SimonOnSoftware_files/shBrushSql.js"></script>
+	<script type="text/javascript" src="Virtualenv%20Tutorial%20%7C%20SimonOnSoftware_files/shBrushVb.js"></script>
+	<script type="text/javascript" src="Virtualenv%20Tutorial%20%7C%20SimonOnSoftware_files/shBrushXml.js"></script>
+	<script type="text/javascript">		
+		SyntaxHighlighter.config.clipboardSwf = 'http://simononsoftware.com/wp-content/plugins/syntax-highlighter-and-code-prettifier/scripts/clipboard.swf';
+		SyntaxHighlighter.all();
+	</script>
+			<link rel="stylesheet" href="Virtualenv%20Tutorial%20%7C%20SimonOnSoftware_files/page.css" type="text/css" media="all"> 	<style type="text/css">
+			.site-title a,
+		.site-description {
+			color: #A26937 !important;
+		}
+		</style>
+	<style type="text/css" id="custom-background-css">
+body.custom-background { background-color: #e8e8ee; }
+</style>
+<!-- Google Analytics Tracking by Google Analyticator 6.4.5: http://www.videousermanuals.com/google-analyticator/ -->
+<script type="text/javascript">
+	var analyticsFileTypes = [''];
+	var analyticsEventTracking = 'enabled';
+</script>
+<script type="text/javascript">
+	var _gaq = _gaq || [];
+	_gaq.push(['_setAccount', 'UA-2281888-7']);
+        _gaq.push(['_addDevId', 'i9k95']); // Google Analyticator App ID with Google 
+        
+	_gaq.push(['_trackPageview']);
+
+	(function() {
+		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		                ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		                var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	})();
+</script>
+</head>
+
+<body class="single single-post postid-801 single-format-standard custom-background custom-font-enabled single-author">
+<div id="page" class="hfeed site">
+	<header id="masthead" class="site-header" role="banner">
+		<hgroup>
+			<h1 class="site-title"><a href="http://simononsoftware.com/" title="SimonOnSoftware" rel="home">SimonOnSoftware</a></h1>
+			<h2 class="site-description">thinking, databases, security, programming and other IT something</h2>
+		</hgroup>
+
+		<nav id="site-navigation" class="main-navigation" role="navigation">
+			<h3 style="display: none;" class="menu-toggle">Menu</h3>
+			<div class="skip-link assistive-text"><a href="#content" title="Skip to content">Skip to content</a></div>
+					</nav><!-- #site-navigation -->
+
+			</header><!-- #masthead -->
+
+	<div id="main" class="wrapper">
+	<div id="primary" class="site-content">
+		<div id="content" role="main">
+
+			
+				
+	<article id="post-801" class="post-801 post type-post status-publish format-standard hentry category-programming tag-programming tag-python tag-tools tag-tutorial tag-ubuntu tag-virtual tag-virtualenv">
+				<header class="entry-header">
+									<h1 class="entry-title">Virtualenv Tutorial</h1>
+										<div class="comments-link">
+					<a href="http://simononsoftware.com/virtualenv-tutorial/#comments" rel="nofollow" title="Comment on Virtualenv Tutorial">22 Replies</a>				</div><!-- .comments-link -->
+					</header><!-- .entry-header -->
+
+				<div class="entry-content">
+			<h2>What is Virtualenv</h2>
+<p>Virtualenv is a great piece of software. It allows to create some 
+virtual environments that have many different versions of Python across 
+the whole system and having different sets of libraries.</p>
+<h2><span style="font-size: 1.285714286rem; line-height: 1.6;">Tools Versions</span></h2>
+<p>While creating this tutorial I used following tools and versions:</p>
+<ul>
+<li>virtualenv – 1.4.8</li>
+<li>Python – 2.6.5</li>
+<li>Ubuntu 10.04 64 bit</li>
+<li>All console programs run with UTF-8</li>
+</ul>
+<h2>Do I Need Virtual Environment?</h2>
+<p>As usually: that depends. Normally you can create and use Python programs without that but using virtualenv can help a lot.</p>
+<p>Such virtual environment provides many possibilities such as:</p>
+<ul>
+<li>On production servers it allows to run applications created for different Python versions.</li>
+<li>On testing servers it allows to perform many tests including:
+<ul>
+<li>Testing the installer script if that really installs all necessary libraries with checking their versions.</li>
+<li>Testing applications using different set of libraries.</li>
+<li>Checking if upgrade of a library won’t cause errors.</li>
+</ul>
+</li>
+</ul>
+<p><span id="more-801"></span></p>
+<h2>Basic Steps with Virtualenv</h2>
+<h3>Installation</h3>
+<p>Installation is very easy. The best way is to perform system wide 
+installation so all users can create and use virtualenv program, this 
+can be useful later. For such an install you have to do it as the main 
+administrator, that’s why there is the ‘sudo’ part of the command. I use
+ Ubuntu on my laptop, and I will use the sudo command, on other systems 
+that could be done some other way. The command for installing is simple:</p>
+<pre><code>sudo easy_install virtualenv
+</code></pre>
+<p>Successful command execution should print on the console something like this:</p>
+<pre><code>sudo easy_install virtualenv
+Searching for virtualenv
+Best match: virtualenv 1.4.8
+Processing virtualenv-1.4.8-py2.6.egg
+Adding virtualenv 1.4.8 to easy-install.pth file
+Installing virtualenv script to /usr/local/bin
+
+Using /usr/local/lib/python2.6/dist-packages/virtualenv-1.4.8-py2.6.egg
+Processing dependencies for virtualenv
+Finished processing dependencies for virtualenv
+</code></pre>
+<h3>Creating the First Virtual Environment</h3>
+<p>Creating the virtual environment is very easy. First of all choose 
+the directory that you want to create the environment in. The best 
+location would be your home directory. Let’s create there a special 
+directory where all different environments will be placed. The directory
+ will be named ‘virt_env’. For creating this directory I’ll use the 
+normal mkdir command:</p>
+<pre><code>mkdir virt_env
+</code></pre>
+<p>Now let’s create the first virtual environment inside this directory. Normally that’s done using the command:</p>
+<pre><code>virtualenv virt_env/virt1
+</code></pre>
+<p>but first let’s talk a bit about the most useful parameters that we can pass there.</p>
+<h5>Possible Parameters for Virtualenv</h5>
+<ul>
+<li><strong>–help</strong> or <strong>-h</strong>Standard unix parameter
+ used for getting some information about program. I’ve never found any 
+program that didn’t follow that convention so it is good to remember 
+that.</li>
+<li><strong>–verbose</strong> or <strong>-v</strong>The program prints a lot more information than usually, that can be useful for solving some problems.</li>
+<li><strong>–quiet</strong> or <strong>-q</strong>Opposite to –verbose, the program prints as less information as possible.</li>
+<li><strong>–clear</strong>In case you want to reinstall virtualenv in a
+ directory where is another installation. Using this option causes 
+deleting previous installation and installing new one, so you have a 
+clean reinstall.</li>
+<li><strong>–version</strong>Prints only the program version. For me currently that prints 1.4.8.</li>
+<li><strong>–no-site-packages</strong>All packages installed using 
+easy_install are global. It means that all users have access to them and
+ can use them. Sometimes it can be useful but now I want to have a pure 
+virtualized environment regardless what I have installed in the system 
+and in other virtual environments. Using this option allows to create 
+what I want – the new environment won’t use any of the system python 
+packages. A pure clean directory without any preinstalled packages.</li>
+</ul>
+<h5>How to Create The Virtual Environment for Python</h5>
+<p>I change now the command shown earlier by adding some parameters. I 
+don’t want to use any preinstalled packages from my operating system, so
+ the command looks like this:</p>
+<pre><code>virtualenv virt_env/virt1 --no-site-packages
+</code></pre>
+<p>Output for the command should be like this:</p>
+<pre><code>New python executable in virt_env/virt1/bin/python
+Installing setuptools............done.
+</code></pre>
+<p>Output using the –verbose parameter is a little bit messy, so don’t 
+use that normally, this is useful only to debug some internals when you 
+want to know how it works or when it doesn’t work:</p>
+<pre><code>virtualenv virt_env/virt1 --no-site-packages --verbose
+
+Creating virt_env/virt1/lib/python2.6
+Symlinking Python bootstrap modules
+  Symlinking virt_env/virt1/lib/python2.6/re.pyc
+  Symlinking virt_env/virt1/lib/python2.6/codecs.pyc
+  Symlinking virt_env/virt1/lib/python2.6/posixpath.pyo
+  Symlinking virt_env/virt1/lib/python2.6/re.py
+  Symlinking virt_env/virt1/lib/python2.6/stat.py
+  Symlinking virt_env/virt1/lib/python2.6/UserDict.pyc
+  Symlinking virt_env/virt1/lib/python2.6/posixpath.pyc
+  Symlinking virt_env/virt1/lib/python2.6/re.pyo
+  Symlinking virt_env/virt1/lib/python2.6/sre_constants.pyo
+  Symlinking virt_env/virt1/lib/python2.6/sre.pyc
+  Symlinking virt_env/virt1/lib/python2.6/sre_constants.py
+  Symlinking virt_env/virt1/lib/python2.6/genericpath.pyc
+  Symlinking virt_env/virt1/lib/python2.6/sre_compile.pyo
+  Symlinking virt_env/virt1/lib/python2.6/posixpath.py
+  Symlinking virt_env/virt1/lib/python2.6/lib-dynload
+  Symlinking virt_env/virt1/lib/python2.6/copy_reg.pyc
+  Symlinking virt_env/virt1/lib/python2.6/codecs.py
+  Symlinking virt_env/virt1/lib/python2.6/copy_reg.py
+  Symlinking virt_env/virt1/lib/python2.6/genericpath.pyo
+  Symlinking virt_env/virt1/lib/python2.6/abc.pyo
+  Symlinking virt_env/virt1/lib/python2.6/warnings.pyo
+  Symlinking virt_env/virt1/lib/python2.6/stat.pyc
+  Symlinking virt_env/virt1/lib/python2.6/sre_parse.py
+  Symlinking virt_env/virt1/lib/python2.6/fnmatch.py
+  Symlinking virt_env/virt1/lib/python2.6/fnmatch.pyc
+  Symlinking virt_env/virt1/lib/python2.6/_abcoll.pyc
+  Symlinking virt_env/virt1/lib/python2.6/os.py
+  Symlinking virt_env/virt1/lib/python2.6/os.pyo
+  Symlinking virt_env/virt1/lib/python2.6/encodings
+  Symlinking virt_env/virt1/lib/python2.6/warnings.py
+  Symlinking virt_env/virt1/lib/python2.6/UserDict.pyo
+  Symlinking virt_env/virt1/lib/python2.6/abc.pyc
+  Symlinking virt_env/virt1/lib/python2.6/locale.pyc
+  Symlinking virt_env/virt1/lib/python2.6/sre_parse.pyc
+  Symlinking virt_env/virt1/lib/python2.6/_abcoll.py
+  Symlinking virt_env/virt1/lib/python2.6/types.pyo
+  Symlinking virt_env/virt1/lib/python2.6/config
+  Symlinking virt_env/virt1/lib/python2.6/codecs.pyo
+  Symlinking virt_env/virt1/lib/python2.6/stat.pyo
+  Symlinking virt_env/virt1/lib/python2.6/locale.pyo
+  Symlinking virt_env/virt1/lib/python2.6/ntpath.pyc
+  Symlinking virt_env/virt1/lib/python2.6/copy_reg.pyo
+  Symlinking virt_env/virt1/lib/python2.6/sre_constants.pyc
+  Symlinking virt_env/virt1/lib/python2.6/genericpath.py
+  Symlinking virt_env/virt1/lib/python2.6/types.py
+  Symlinking virt_env/virt1/lib/python2.6/sre_compile.pyc
+  Symlinking virt_env/virt1/lib/python2.6/ntpath.py
+  Symlinking virt_env/virt1/lib/python2.6/os.pyc
+  Symlinking virt_env/virt1/lib/python2.6/_abcoll.pyo
+  Symlinking virt_env/virt1/lib/python2.6/sre_compile.py
+  Symlinking virt_env/virt1/lib/python2.6/fnmatch.pyo
+  Symlinking virt_env/virt1/lib/python2.6/linecache.pyc
+  Symlinking virt_env/virt1/lib/python2.6/types.pyc
+  Symlinking virt_env/virt1/lib/python2.6/sre.py
+  Symlinking virt_env/virt1/lib/python2.6/abc.py
+  Symlinking virt_env/virt1/lib/python2.6/warnings.pyc
+  Symlinking virt_env/virt1/lib/python2.6/UserDict.py
+  Symlinking virt_env/virt1/lib/python2.6/sre_parse.pyo
+  Symlinking virt_env/virt1/lib/python2.6/linecache.pyo
+  Symlinking virt_env/virt1/lib/python2.6/linecache.py
+  Symlinking virt_env/virt1/lib/python2.6/locale.py
+Creating virt_env/virt1/lib/python2.6/site-packages
+Writing virt_env/virt1/lib/python2.6/site.py
+Writing virt_env/virt1/lib/python2.6/orig-prefix.txt
+Writing virt_env/virt1/lib/python2.6/no-global-site-packages.txt
+Creating parent directories for virt_env/virt1/include
+Symlinking virt_env/virt1/include/python2.6
+Creating virt_env/virt1/bin
+New python executable in virt_env/virt1/bin/python
+Changed mode of virt_env/virt1/bin/python to 0755
+Testing executable with virt_env/virt1/bin/python -c "import sys; print sys.prefix"
+Got sys.prefix result: '/home/virt/virt_env/virt1'
+Creating virt_env/virt1/lib/python2.6/distutils
+Writing virt_env/virt1/lib/python2.6/distutils/__init__.py
+Writing virt_env/virt1/lib/python2.6/distutils/distutils.cfg
+Using existing setuptools egg: /usr/local/lib/python2.6/dist-packages/virtualenv-1.4.8-py2.6.egg/virtualenv_support/setuptools-0.6c11-py2.6.egg
+Installing setuptools..........
+  Processing dependencies for setuptools==0.6c11
+  Finished processing dependencies for setuptools==0.6c11
+...Installing setuptools...done.
+Installing pip-0.7.1.tar.gz
+  Processing pip-0.7.1.tar.gz
+  Running pip-0.7.1/setup.py -q bdist_egg --dist-dir /tmp/easy_install-xgmRQJ/pip-0.7.1/egg-dist-tmp-N5lGfG
+  warning: no previously-included files matching '*.txt' found under directory 'docs/_build'
+  no previously-included directories found matching 'docs/_build/_sources'
+  zip_safe flag not set; analyzing archive contents...
+  pip.venv: module references __file__
+  pip.basecommand: module references __file__
+  pip.runner: module references __file__
+  pip.vcs.__init__: module references __file__
+  Adding pip 0.7.1 to easy-install.pth file
+  Processing dependencies for pip==0.7.1
+  Finished processing dependencies for pip==0.7.1
+Writing virt_env/virt1/bin/activate
+Writing virt_env/virt1/bin/activate_this.py
+</code></pre>
+<h3>Using the Virtual Python Environment</h3>
+<h5>Activating Environment</h5>
+<p>Using the virtual environment is pretty simple. First of all you have
+ to define what environment you want to use. So far there is just one 
+environment but later will be more. Let’s use this one environment. The 
+environment directory is</p>
+<pre><code>virt_env/virt1/
+</code></pre>
+<p>the command for loading this environment is:</p>
+<pre><code>virt@ymon:~$ source virt_env/virt1/bin/activate
+</code></pre>
+<p>Successful execution changes the prompt, now it looks like this:</p>
+<pre><code>(virt1)virt@ymon:~$
+</code></pre>
+<p>The first part of the prompt is the name of the virtual environment 
+so it is very easy to see which environment is used at this time. Of 
+course you can change the prompt to the previous version but I wouldn’t 
+recommend that as it can become very messy when using more environments.</p>
+<h5>Deactivating Current Environment</h5>
+<p>Current environment can be easily deactivated using command</p>
+<pre><code>(virt1)virt@ymon:~$ deactivate
+</code></pre>
+<p>that reverts the prompt to previous version and now it looks like this:</p>
+<pre><code>virt@ymon:~$
+</code></pre>
+<p>The deactivate command exists only when a virtual environment is 
+active so don’t be surprised that there isn’t any when you outside the 
+environment.</p>
+<h3>Installing Packages in Environment</h3>
+<h3>Checking What is Installed</h3>
+<p>For listing all installed Python packages I will use yolk. This is a simple console program which can list installed packages.</p>
+<p>Installation is quite simple:</p>
+<pre><code>sudo easy_install yolk
+</code></pre>
+<p>Usage is even simpler:</p>
+<pre><code>yolk -l
+</code></pre>
+<p>Running that command outside the virtual environment shows me just 114 packages so I will not paste the whole package list here.</p>
+<p>Using yolk in the new environment needs installing that locally, so let’s install:</p>
+<pre><code>virt@ymon:~$ source virt_env/virt1/bin/activate
+(virt1)virt@ymon:~$ easy_install yolk
+Searching for yolk
+Best match: yolk 0.4.1
+Processing yolk-0.4.1-py2.6.egg
+yolk 0.4.1 is already the active version in easy-install.pth
+Installing yolk script to /home/virt/virt_env/virt1/bin
+
+Using /home/virt/virt_env/virt1/lib/python2.6/site-packages/yolk-0.4.1-py2.6.egg
+Processing dependencies for yolk
+Finished processing dependencies for yolk
+(virt1)virt@ymon:~$
+</code></pre>
+<p>Now I can use that locally. On the new virtual environment there isn’t much packages:</p>
+<pre><code>(virt1)virt@ymon:~$ yolk -l
+Python          - 2.6.5        - active development (/usr/lib/python2.6/lib-dynload)
+pip             - 0.7.1        - active
+setuptools      - 0.6c11       - active
+wsgiref         - 0.1.2        - active development (/usr/lib/python2.6)
+yolk            - 0.4.1        - active
+</code></pre>
+<h3>Installing Other Packages</h3>
+<p>That’s easy, I can install packages normally, just in the one 
+environment, not touching any other or globally packages. Now I will 
+install Pylons in the environment, but first let’s create other one to 
+ensure that the packages are really installed just in this one.</p>
+<pre><code>(virt1)virt@ymon:~$ deactivate
+virt@ymon:~$ virtualenv virt_env/virt2 --no-site-packages
+New python executable in virt_env/virt2/bin/python
+Installing setuptools............done.
+</code></pre>
+<p>OK, now there is another environment, let’s check what packages are 
+installed there (of course after installing yolk like in the previous 
+one):</p>
+<pre><code>(virt2)virt@ymon:~$ yolk -l
+Python          - 2.6.5        - active development (/usr/lib/python2.6/lib-dynload)
+pip             - 0.7.1        - active
+setuptools      - 0.6c11       - active
+wsgiref         - 0.1.2        - active development (/usr/lib/python2.6)
+yolk            - 0.4.1        - active
+</code></pre>
+<p>Great, the list looks exactly like the previous one.</p>
+<p>Now I just switch to the first environment and install Pylons.</p>
+<pre><code>(virt2)virt@ymon:~$ deactivate
+virt@ymon:~$ source virt_env/virt1/bin/activate
+(virt1)virt@ymon:~$ easy_install Pylons
+</code></pre>
+<p>This command prints a lot on the console as it is installing many 
+other packages needed by Pylons. The last lines of the messages list 
+looks like this:</p>
+<pre><code>Installed /home/virt/virt_env/virt1/lib/python2.6/site-packages/Pygments-1.3.1-py2.6.egg
+Finished processing dependencies for Pylons
+(virt1)virt@ymon:~$
+</code></pre>
+<p>And also let’s install SQLAlchemy library:</p>
+<pre><code>(virt1)virt@ymon:~$ easy_install SqlAlchemy
+</code></pre>
+<p>And now let’s check the list of installed packages:</p>
+<pre><code>(virt1)virt@ymon:~$ yolk -l
+Beaker          - 1.5.3        - active
+FormEncode      - 1.2.2        - active
+Mako            - 0.3.2        - active
+Paste           - 1.7.3.1      - active
+PasteDeploy     - 1.3.3        - active
+PasteScript     - 1.7.3        - active
+Pygments        - 1.3.1        - active
+Pylons          - 0.10rc1      - active
+Python          - 2.6.5        - active development (/usr/lib/python2.6/lib-dynload)
+Routes          - 1.12.1       - active
+SQLAlchemy      - 0.6.0        - active
+Tempita         - 0.4          - active
+WebError        - 0.10.2       - active
+WebHelpers      - 1.0b6        - active
+WebOb           - 0.9.8        - active
+WebTest         - 1.2.1        - active
+decorator       - 3.1.2        - active
+nose            - 0.11.3       - active
+pip             - 0.7.1        - active
+setuptools      - 0.6c11       - active
+simplejson      - 2.1.1        - active
+wsgiref         - 0.1.2        - active development (/usr/lib/python2.6)
+yolk            - 0.4.1        - active
+</code></pre>
+<p>As you can see there is installed the version 0.6.0 of SQLAlchemy library.</p>
+<p>Great, it just works but what about the second environment, does it have those packages also installed?</p>
+<pre><code>(virt1)virt@ymon:~$ deactivate
+virt@ymon:~$ source virt_env/virt2/bin/activate
+(virt2)virt@ymon:~$ yolk -l
+Python          - 2.6.5        - active development (/usr/lib/python2.6/lib-dynload)
+pip             - 0.7.1        - active
+setuptools      - 0.6c11       - active
+wsgiref         - 0.1.2        - active development (/usr/lib/python2.6)
+yolk            - 0.4.1        - active
+</code></pre>
+<p>It seems that everything is OK, so let’s install there Pylons and check the list of installed packages:</p>
+<pre><code>(virt1)virt@ymon:~$ deactivate
+virt@ymon:~$ source virt_env/virt2/bin/activate
+(virt2)virt@ymon:~$ easy_install Pylons
+[... here a lot of messages ...]
+Processing dependencies for Pylons
+Finished processing dependencies for Pylons
+(virt2)virt@ymon:~$ yolk -l
+Beaker          - 1.5.3        - active
+FormEncode      - 1.2.2        - active
+Mako            - 0.3.2        - active
+Paste           - 1.7.3.1      - active
+PasteDeploy     - 1.3.3        - active
+PasteScript     - 1.7.3        - active
+Pygments        - 1.3.1        - active
+Pylons          - 0.10rc1      - active
+Python          - 2.6.5        - active development (/usr/lib/python2.6/lib-dynload)
+Routes          - 1.12.1       - active
+Tempita         - 0.4          - active
+WebError        - 0.10.2       - active
+WebHelpers      - 1.0b6        - active
+WebOb           - 0.9.8        - active
+WebTest         - 1.2.1        - active
+decorator       - 3.1.2        - active
+nose            - 0.11.3       - active
+pip             - 0.7.1        - active
+setuptools      - 0.6c11       - active
+simplejson      - 2.1.1        - active
+wsgiref         - 0.1.2        - active development (/usr/lib/python2.6)
+yolk            - 0.4.1        - active
+</code></pre>
+<p>Great, but there is no SQLAlchemy. So let’s install that but using 
+the previous version, that means installing the version 0.5.0.</p>
+<pre><code>(virt2)virt@ymon:~$ easy_install "SQLAlchemy==0.5.0"
+Searching for SQLAlchemy==0.5.0
+Reading http://pypi.python.org/simple/SQLAlchemy/
+Reading http://www.sqlalchemy.org
+Best match: SQLAlchemy 0.5.0
+Downloading http://pypi.python.org/packages/source/S/SQLAlchemy/SQLAlchemy-0.5.0.tar.gz##md5=df49f403b2db3c54aace64aebe26cf90
+Processing SQLAlchemy-0.5.0.tar.gz
+Running SQLAlchemy-0.5.0/setup.py -q bdist_egg --dist-dir /tmp/easy_install-T1eI2f/SQLAlchemy-0.5.0/egg-dist-tmp-jnaNHq
+no previously-included directories found matching 'doc/build/output'
+zip_safe flag not set; analyzing archive contents...
+sqlalchemy.databases.mysql: module MAY be using inspect.stack
+Adding SQLAlchemy 0.5.0 to easy-install.pth file
+
+Installed /home/virt/virt_env/virt2/lib/python2.6/site-packages/SQLAlchemy-0.5.0-py2.6.egg
+Processing dependencies for SQLAlchemy==0.5.0
+Finished processing dependencies for SQLAlchemy==0.5.0
+</code></pre>
+<p>Looks fine, lets check the installed version:</p>
+<pre><code>(virt2)virt@ymon:~$ yolk -l | grep SQLAlchemy
+SQLAlchemy      - 0.5.0        - active
+</code></pre>
+<h3>Summary</h3>
+<p>Now I’ve got two Python environments in directories:</p>
+<pre><code>virt_env/virt1/
+virt_env/virt2/
+</code></pre>
+<p>in both there is the newest version of Pylons installed.</p>
+<pre><code>In the first there is SQLAlchemy 0.6.0
+In the second there is SQLAlchemy 0.5.0.
+</code></pre>
+<p>Now that’s easy to test the same Pylons application how it behaves on
+ both versions of SQLAlchemy without any changes in configuration.</p>
+<div class="yarpp-related">
+<p><strong>Related posts:</strong></p><ol>
+<li><a href="http://simononsoftware.com/naming-convention-aka-php-vs-python/" rel="bookmark" title="Naming Convention aka PHP vs Python">Naming Convention aka PHP vs Python</a> <small>Is Python really better than PHP? I doubt, and in...</small></li>
+</ol><p></p>
+<img src="Virtualenv%20Tutorial%20%7C%20SimonOnSoftware_files/a22a137289771b7875d413ed1c844da6.gif" alt="Yarpp">
+</div>
+					</div><!-- .entry-content -->
+		
+		<footer class="entry-meta">
+			This entry was posted in <a href="http://simononsoftware.com/category/programming/" title="View all posts in programming" rel="category tag">programming</a> and tagged <a href="http://simononsoftware.com/tag/programming/" rel="tag">programming</a>, <a href="http://simononsoftware.com/tag/python/" rel="tag">python</a>, <a href="http://simononsoftware.com/tag/tools/" rel="tag">tools</a>, <a href="http://simononsoftware.com/tag/tutorial/" rel="tag">tutorial</a>, <a href="http://simononsoftware.com/tag/ubuntu/" rel="tag">ubuntu</a>, <a href="http://simononsoftware.com/tag/virtual/" rel="tag">virtual</a>, <a href="http://simononsoftware.com/tag/virtualenv/" rel="tag">virtualenv</a> on <a href="http://simononsoftware.com/virtualenv-tutorial/" title="12:00 pm" rel="bookmark"><time class="entry-date" datetime="2010-04-30T12:00:55+00:00" pubdate="">April 30, 2010</time></a><span class="by-author"> by <span class="author vcard"><a class="url fn n" href="http://simononsoftware.com/author/Simon/" title="View all posts by Szymon" rel="author">Szymon</a></span></span>.								</footer><!-- .entry-meta -->
+	</article><!-- #post -->
+
+				<nav class="nav-single">
+					<h3 class="assistive-text">Post navigation</h3>
+					<span class="nav-previous"><a href="http://simononsoftware.com/ubuntu-10-04-upgrade/" rel="prev"><span class="meta-nav">←</span> Ubuntu 10.04 Upgrade</a></span>
+					<span class="nav-next"><a href="http://simononsoftware.com/oh-those-terrible-units/" rel="next">Oh, Those Terrible Units <span class="meta-nav">→</span></a></span>
+				</nav><!-- .nav-single -->
+
+				
+<div id="comments" class="comments-area">
+
+	
+			<h2 class="comments-title">
+			22 thoughts on “<span>Virtualenv Tutorial</span>”		</h2>
+
+		<ol class="commentlist">
+				<li class="comment even thread-even depth-1" id="li-comment-4788">
+		<article id="comment-4788" class="comment">
+			<header class="comment-meta comment-author vcard">
+				<img alt="" src="Virtualenv%20Tutorial%20%7C%20SimonOnSoftware_files/1000856b94a09a6c1dd5513491ef3f26.png" class="avatar avatar-44 photo" height="44" width="44"><cite class="fn">Youji </cite><a href="http://simononsoftware.com/virtualenv-tutorial/#comment-4788"><time pubdate="" datetime="2011-05-23T19:08:16+00:00">May 23, 2011 at 7:08 pm</time></a>			</header><!-- .comment-meta -->
+
+			
+			<section class="comment-content comment">
+				<p>thanks, nice tutorial!</p>
+							</section><!-- .comment-content -->
+
+			<div class="reply">
+							</div><!-- .reply -->
+		</article><!-- #comment-## -->
+	</li><!-- #comment-## -->
+	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-4968">
+		<article id="comment-4968" class="comment">
+			<header class="comment-meta comment-author vcard">
+				<img alt="" src="Virtualenv%20Tutorial%20%7C%20SimonOnSoftware_files/f6e8a6b7c8f55befffb51a6ab417e3ab.png" class="avatar avatar-44 photo" height="44" width="44"><cite class="fn"><a href="http://www.bonsai-studio.net/" rel="external nofollow" class="url">Giuseppe</a> </cite><a href="http://simononsoftware.com/virtualenv-tutorial/#comment-4968"><time pubdate="" datetime="2011-06-04T22:37:57+00:00">June 4, 2011 at 10:37 pm</time></a>			</header><!-- .comment-meta -->
+
+			
+			<section class="comment-content comment">
+				<p>Thank you for this tutorial, definitely easy to follow and understand. Finally I got a quick intro to VirtualEnv.<br>
+What about “Add description of using different Python versions”?</p>
+							</section><!-- .comment-content -->
+
+			<div class="reply">
+							</div><!-- .reply -->
+		</article><!-- #comment-## -->
+	</li><!-- #comment-## -->
+	<li class="comment byuser comment-author-Simon bypostauthor even thread-even depth-1" id="li-comment-4969">
+		<article id="comment-4969" class="comment">
+			<header class="comment-meta comment-author vcard">
+				<img alt="" src="Virtualenv%20Tutorial%20%7C%20SimonOnSoftware_files/a11515b4838cb8fa6e6bab942bd8777d.png" class="avatar avatar-44 photo" height="44" width="44"><cite class="fn"><a href="http://simononsoftware.com/" rel="external nofollow" class="url">Simon</a> <span> Post author</span></cite><a href="http://simononsoftware.com/virtualenv-tutorial/#comment-4969"><time pubdate="" datetime="2011-06-05T11:05:44+00:00">June 5, 2011 at 11:05 am</time></a>			</header><!-- .comment-meta -->
+
+			
+			<section class="comment-content comment">
+				<p>@Giuseppe, yes, I’m thinking about that, as well as about writing
+ the same tutorial for windows. I hope to finish that very soon.</p>
+							</section><!-- .comment-content -->
+
+			<div class="reply">
+							</div><!-- .reply -->
+		</article><!-- #comment-## -->
+	</li><!-- #comment-## -->
+	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-5565">
+		<article id="comment-5565" class="comment">
+			<header class="comment-meta comment-author vcard">
+				<img alt="" src="Virtualenv%20Tutorial%20%7C%20SimonOnSoftware_files/d98bd91ed2cea43056594b7ce5369b17.png" class="avatar avatar-44 photo" height="44" width="44"><cite class="fn">Paul </cite><a href="http://simononsoftware.com/virtualenv-tutorial/#comment-5565"><time pubdate="" datetime="2011-07-28T22:30:17+00:00">July 28, 2011 at 10:30 pm</time></a>			</header><!-- .comment-meta -->
+
+			
+			<section class="comment-content comment">
+				<p>Thanks! I love it when someone manages to explain how to use 
+complex software, when it’s simple after all. You’ve got a talent, 
+Simon!</p>
+							</section><!-- .comment-content -->
+
+			<div class="reply">
+							</div><!-- .reply -->
+		</article><!-- #comment-## -->
+	</li><!-- #comment-## -->
+	<li class="comment even thread-even depth-1" id="li-comment-5568">
+		<article id="comment-5568" class="comment">
+			<header class="comment-meta comment-author vcard">
+				<img alt="" src="Virtualenv%20Tutorial%20%7C%20SimonOnSoftware_files/8df54c5a942cbce5c0ac3a26b5949d1b.jpeg" class="avatar avatar-44 photo" height="44" width="44"><cite class="fn"><a href="http://www.clintlaskowski.com/" rel="external nofollow" class="url">Clint Laskowski</a> </cite><a href="http://simononsoftware.com/virtualenv-tutorial/#comment-5568"><time pubdate="" datetime="2011-07-29T10:44:02+00:00">July 29, 2011 at 10:44 am</time></a>			</header><!-- .comment-meta -->
+
+			
+			<section class="comment-content comment">
+				<p>So, would you say VirtualEnv for Python is similar to RVM for Ruby?</p>
+							</section><!-- .comment-content -->
+
+			<div class="reply">
+							</div><!-- .reply -->
+		</article><!-- #comment-## -->
+	</li><!-- #comment-## -->
+	<li class="comment byuser comment-author-Simon bypostauthor odd alt thread-odd thread-alt depth-1" id="li-comment-5572">
+		<article id="comment-5572" class="comment">
+			<header class="comment-meta comment-author vcard">
+				<img alt="" src="Virtualenv%20Tutorial%20%7C%20SimonOnSoftware_files/a11515b4838cb8fa6e6bab942bd8777d.png" class="avatar avatar-44 photo" height="44" width="44"><cite class="fn"><a href="http://simononsoftware.com/" rel="external nofollow" class="url">Simon</a> <span> Post author</span></cite><a href="http://simononsoftware.com/virtualenv-tutorial/#comment-5572"><time pubdate="" datetime="2011-07-29T19:03:05+00:00">July 29, 2011 at 7:03 pm</time></a>			</header><!-- .comment-meta -->
+
+			
+			<section class="comment-content comment">
+				<p>@Clint<br>
+Exactly.</p>
+							</section><!-- .comment-content -->
+
+			<div class="reply">
+							</div><!-- .reply -->
+		</article><!-- #comment-## -->
+	</li><!-- #comment-## -->
+	<li class="comment even thread-even depth-1" id="li-comment-5747">
+		<article id="comment-5747" class="comment">
+			<header class="comment-meta comment-author vcard">
+				<img alt="" src="Virtualenv%20Tutorial%20%7C%20SimonOnSoftware_files/a0ea23054a1e071bc746b7fa0b8d4c04.png" class="avatar avatar-44 photo" height="44" width="44"><cite class="fn">Joey </cite><a href="http://simononsoftware.com/virtualenv-tutorial/#comment-5747"><time pubdate="" datetime="2011-08-15T00:29:46+00:00">August 15, 2011 at 12:29 am</time></a>			</header><!-- .comment-meta -->
+
+			
+			<section class="comment-content comment">
+				<p>Thank you for the tutorial!  Very well organized and concise.</p>
+							</section><!-- .comment-content -->
+
+			<div class="reply">
+							</div><!-- .reply -->
+		</article><!-- #comment-## -->
+	</li><!-- #comment-## -->
+	<li class="comment byuser comment-author-Simon bypostauthor odd alt thread-odd thread-alt depth-1" id="li-comment-5752">
+		<article id="comment-5752" class="comment">
+			<header class="comment-meta comment-author vcard">
+				<img alt="" src="Virtualenv%20Tutorial%20%7C%20SimonOnSoftware_files/a11515b4838cb8fa6e6bab942bd8777d.png" class="avatar avatar-44 photo" height="44" width="44"><cite class="fn"><a href="http://simononsoftware.com/" rel="external nofollow" class="url">Simon</a> <span> Post author</span></cite><a href="http://simononsoftware.com/virtualenv-tutorial/#comment-5752"><time pubdate="" datetime="2011-08-15T09:27:50+00:00">August 15, 2011 at 9:27 am</time></a>			</header><!-- .comment-meta -->
+
+			
+			<section class="comment-content comment">
+				<p>Hi Joey,<br>
+thanks for the nice words. The tutorial is a little bit outdated, but 
+the brand new shiny version is on its way and I will publish that soon.</p>
+							</section><!-- .comment-content -->
+
+			<div class="reply">
+							</div><!-- .reply -->
+		</article><!-- #comment-## -->
+	</li><!-- #comment-## -->
+	<li class="comment even thread-even depth-1" id="li-comment-5917">
+		<article id="comment-5917" class="comment">
+			<header class="comment-meta comment-author vcard">
+				<img alt="" src="Virtualenv%20Tutorial%20%7C%20SimonOnSoftware_files/9a07753b28e3d1f52e136636f7afcdf8.png" class="avatar avatar-44 photo" height="44" width="44"><cite class="fn">Jamie </cite><a href="http://simononsoftware.com/virtualenv-tutorial/#comment-5917"><time pubdate="" datetime="2011-08-28T02:55:39+00:00">August 28, 2011 at 2:55 am</time></a>			</header><!-- .comment-meta -->
+
+			
+			<section class="comment-content comment">
+				<p>Hey Simon, Thanks for the tutorial! Very clean and right to the point. When you update it are you going to add virtualwrapper?</p>
+							</section><!-- .comment-content -->
+
+			<div class="reply">
+							</div><!-- .reply -->
+		</article><!-- #comment-## -->
+	</li><!-- #comment-## -->
+	<li class="comment byuser comment-author-Simon bypostauthor odd alt thread-odd thread-alt depth-1" id="li-comment-5919">
+		<article id="comment-5919" class="comment">
+			<header class="comment-meta comment-author vcard">
+				<img alt="" src="Virtualenv%20Tutorial%20%7C%20SimonOnSoftware_files/a11515b4838cb8fa6e6bab942bd8777d.png" class="avatar avatar-44 photo" height="44" width="44"><cite class="fn"><a href="http://simononsoftware.com/" rel="external nofollow" class="url">Simon</a> <span> Post author</span></cite><a href="http://simononsoftware.com/virtualenv-tutorial/#comment-5919"><time pubdate="" datetime="2011-08-28T12:18:03+00:00">August 28, 2011 at 12:18 pm</time></a>			</header><!-- .comment-meta -->
+
+			
+			<section class="comment-content comment">
+				<p>Hi Jamie,<br>
+It will be published soon… however without virtualwrapper at this time. 
+Next version should be with virtualwrapper and I’m also working on the 
+Windows version (as it is more complicated there).<br>
+By <b>soon</b> I think in the near future, but I cannot give exact data (I’ve got too many things to do right now).</p>
+							</section><!-- .comment-content -->
+
+			<div class="reply">
+							</div><!-- .reply -->
+		</article><!-- #comment-## -->
+	</li><!-- #comment-## -->
+	<li class="comment even thread-even depth-1" id="li-comment-11110">
+		<article id="comment-11110" class="comment">
+			<header class="comment-meta comment-author vcard">
+				<img alt="" src="Virtualenv%20Tutorial%20%7C%20SimonOnSoftware_files/451e7753dea070cb0a9f6368c0001470.jpeg" class="avatar avatar-44 photo" height="44" width="44"><cite class="fn">telminov </cite><a href="http://simononsoftware.com/virtualenv-tutorial/#comment-11110"><time pubdate="" datetime="2012-04-09T11:34:00+00:00">April 9, 2012 at 11:34 am</time></a>			</header><!-- .comment-meta -->
+
+			
+			<section class="comment-content comment">
+				<p>It’s good quality tutorial. Thank you!</p>
+							</section><!-- .comment-content -->
+
+			<div class="reply">
+							</div><!-- .reply -->
+		</article><!-- #comment-## -->
+	</li><!-- #comment-## -->
+	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-12846">
+		<article id="comment-12846" class="comment">
+			<header class="comment-meta comment-author vcard">
+				<img alt="" src="Virtualenv%20Tutorial%20%7C%20SimonOnSoftware_files/f5595d627011f6a4c67f7bd49194baa6.png" class="avatar avatar-44 photo" height="44" width="44"><cite class="fn">pratz </cite><a href="http://simononsoftware.com/virtualenv-tutorial/#comment-12846"><time pubdate="" datetime="2012-06-26T08:20:39+00:00">June 26, 2012 at 8:20 am</time></a>			</header><!-- .comment-meta -->
+
+			
+			<section class="comment-content comment">
+				<p>Hey,</p>
+<p>Still very useful and awesome.</p>
+<p>Thanks.</p>
+							</section><!-- .comment-content -->
+
+			<div class="reply">
+							</div><!-- .reply -->
+		</article><!-- #comment-## -->
+	</li><!-- #comment-## -->
+	<li class="comment even thread-even depth-1" id="li-comment-14089">
+		<article id="comment-14089" class="comment">
+			<header class="comment-meta comment-author vcard">
+				<img alt="" src="Virtualenv%20Tutorial%20%7C%20SimonOnSoftware_files/8ef5cef041e468a612b01c2350f7083a.jpeg" class="avatar avatar-44 photo" height="44" width="44"><cite class="fn">agmangas </cite><a href="http://simononsoftware.com/virtualenv-tutorial/#comment-14089"><time pubdate="" datetime="2012-09-04T16:15:53+00:00">September 4, 2012 at 4:15 pm</time></a>			</header><!-- .comment-meta -->
+
+			
+			<section class="comment-content comment">
+				<p>Perfect tutorial, been searching for something like this for a while <img src="Virtualenv%20Tutorial%20%7C%20SimonOnSoftware_files/icon_smile.gif" alt=":)" class="wp-smiley">  many thanks!</p>
+							</section><!-- .comment-content -->
+
+			<div class="reply">
+							</div><!-- .reply -->
+		</article><!-- #comment-## -->
+	</li><!-- #comment-## -->
+	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-15243">
+		<article id="comment-15243" class="comment">
+			<header class="comment-meta comment-author vcard">
+				<img alt="" src="Virtualenv%20Tutorial%20%7C%20SimonOnSoftware_files/37d2629a52cca8f962fffcecfc340544.png" class="avatar avatar-44 photo" height="44" width="44"><cite class="fn">Nishant </cite><a href="http://simononsoftware.com/virtualenv-tutorial/#comment-15243"><time pubdate="" datetime="2012-10-29T21:08:04+00:00">October 29, 2012 at 9:08 pm</time></a>			</header><!-- .comment-meta -->
+
+			
+			<section class="comment-content comment">
+				<p>Hi Simon,</p>
+<p>I am not able to isolate my virtual environment. I created the two virt1 and virt2.<br>
+if I install easy_install yolk. Then it shows the same modules of python
+ as are without virtualenv.I have checked it many a times.I am using 
+python -2.6,virtualenv-1.7.1.2 and ubuntu10.10</p>
+							</section><!-- .comment-content -->
+
+			<div class="reply">
+							</div><!-- .reply -->
+		</article><!-- #comment-## -->
+	</li><!-- #comment-## -->
+	<li class="comment even thread-even depth-1" id="li-comment-16979">
+		<article id="comment-16979" class="comment">
+			<header class="comment-meta comment-author vcard">
+				<img alt="" src="Virtualenv%20Tutorial%20%7C%20SimonOnSoftware_files/2d62e386c079f824fe7f0c8e8e83128b.jpeg" class="avatar avatar-44 photo" height="44" width="44"><cite class="fn"><a href="http://blog.maxcnunes.net/" rel="external nofollow" class="url">Max Claus Nunes</a> </cite><a href="http://simononsoftware.com/virtualenv-tutorial/#comment-16979"><time pubdate="" datetime="2012-12-15T18:28:17+00:00">December 15, 2012 at 6:28 pm</time></a>			</header><!-- .comment-meta -->
+
+			
+			<section class="comment-content comment">
+				<p>Great tutorial, really thanks <img src="Virtualenv%20Tutorial%20%7C%20SimonOnSoftware_files/icon_biggrin.gif" alt=":D" class="wp-smiley"> </p>
+							</section><!-- .comment-content -->
+
+			<div class="reply">
+							</div><!-- .reply -->
+		</article><!-- #comment-## -->
+	</li><!-- #comment-## -->
+	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-17305">
+		<article id="comment-17305" class="comment">
+			<header class="comment-meta comment-author vcard">
+				<img alt="" src="Virtualenv%20Tutorial%20%7C%20SimonOnSoftware_files/a6a729a46a9c93df3060154ca0c29d7c.png" class="avatar avatar-44 photo" height="44" width="44"><cite class="fn">dhrubajyoti das </cite><a href="http://simononsoftware.com/virtualenv-tutorial/#comment-17305"><time pubdate="" datetime="2012-12-24T07:52:10+00:00">December 24, 2012 at 7:52 am</time></a>			</header><!-- .comment-meta -->
+
+			
+			<section class="comment-content comment">
+				<p>Thanks, I was confused about pythons virtual env setup but after 
+reading your article I was able to set up on my linux box. Thanks again.</p>
+							</section><!-- .comment-content -->
+
+			<div class="reply">
+							</div><!-- .reply -->
+		</article><!-- #comment-## -->
+	</li><!-- #comment-## -->
+	<li class="comment even thread-even depth-1" id="li-comment-23933">
+		<article id="comment-23933" class="comment">
+			<header class="comment-meta comment-author vcard">
+				<img alt="" src="Virtualenv%20Tutorial%20%7C%20SimonOnSoftware_files/a48a9eee6478ceb5302f54c5f7a51abc.png" class="avatar avatar-44 photo" height="44" width="44"><cite class="fn">Luke </cite><a href="http://simononsoftware.com/virtualenv-tutorial/#comment-23933"><time pubdate="" datetime="2013-04-03T16:43:08+00:00">April 3, 2013 at 4:43 pm</time></a>			</header><!-- .comment-meta -->
+
+			
+			<section class="comment-content comment">
+				<p>I get the same issues as Nishant above. Any pointers? </p>
+<p>“I am not able to isolate my virtual environment. I created the two virt1 and virt2.<br>
+if I install easy_install yolk. Then it shows the same modules of python
+ as are without virtualenv.I have checked it many a times.I am using 
+python -2.6,virtualenv-1.7.1.2 and ubuntu10.10″</p>
+							</section><!-- .comment-content -->
+
+			<div class="reply">
+							</div><!-- .reply -->
+		</article><!-- #comment-## -->
+	</li><!-- #comment-## -->
+	<li class="comment byuser comment-author-Simon bypostauthor odd alt thread-odd thread-alt depth-1" id="li-comment-23934">
+		<article id="comment-23934" class="comment">
+			<header class="comment-meta comment-author vcard">
+				<img alt="" src="Virtualenv%20Tutorial%20%7C%20SimonOnSoftware_files/a11515b4838cb8fa6e6bab942bd8777d.png" class="avatar avatar-44 photo" height="44" width="44"><cite class="fn"><a href="http://simononsoftware.com/" rel="external nofollow" class="url">Szymon</a> <span> Post author</span></cite><a href="http://simononsoftware.com/virtualenv-tutorial/#comment-23934"><time pubdate="" datetime="2013-04-03T16:56:54+00:00">April 3, 2013 at 4:56 pm</time></a>			</header><!-- .comment-meta -->
+
+			
+			<section class="comment-content comment">
+				<p>I will try to find out what is going on with yolk, I don’t have any ready answer yet.</p>
+							</section><!-- .comment-content -->
+
+			<div class="reply">
+							</div><!-- .reply -->
+		</article><!-- #comment-## -->
+	</li><!-- #comment-## -->
+	<li class="comment even thread-even depth-1" id="li-comment-24031">
+		<article id="comment-24031" class="comment">
+			<header class="comment-meta comment-author vcard">
+				<img alt="" src="Virtualenv%20Tutorial%20%7C%20SimonOnSoftware_files/a48a9eee6478ceb5302f54c5f7a51abc.png" class="avatar avatar-44 photo" height="44" width="44"><cite class="fn">Luke </cite><a href="http://simononsoftware.com/virtualenv-tutorial/#comment-24031"><time pubdate="" datetime="2013-04-04T13:13:28+00:00">April 4, 2013 at 1:13 pm</time></a>			</header><!-- .comment-meta -->
+
+			
+			<section class="comment-content comment">
+				<p>To elaborate, any installed packages whilst my virtualenv is 
+active are installed to my system python modules. I wondered if this is 
+to do with my PYTHONPATH but there is no pythonpath in my bash profile 
+and everything works fine with my system python  modules.</p>
+							</section><!-- .comment-content -->
+
+			<div class="reply">
+							</div><!-- .reply -->
+		</article><!-- #comment-## -->
+	</li><!-- #comment-## -->
+	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-31063">
+		<article id="comment-31063" class="comment">
+			<header class="comment-meta comment-author vcard">
+				<img alt="" src="Virtualenv%20Tutorial%20%7C%20SimonOnSoftware_files/a482a4b03e3e7c7ec642e785d9aa0015.png" class="avatar avatar-44 photo" height="44" width="44"><cite class="fn">Thyag Sundaramoorthy </cite><a href="http://simononsoftware.com/virtualenv-tutorial/#comment-31063"><time pubdate="" datetime="2013-07-06T14:46:42+00:00">July 6, 2013 at 2:46 pm</time></a>			</header><!-- .comment-meta -->
+
+			
+			<section class="comment-content comment">
+				<p>Nice tutorial. Thank you</p>
+							</section><!-- .comment-content -->
+
+			<div class="reply">
+							</div><!-- .reply -->
+		</article><!-- #comment-## -->
+	</li><!-- #comment-## -->
+	<li class="comment even thread-even depth-1" id="li-comment-33574">
+		<article id="comment-33574" class="comment">
+			<header class="comment-meta comment-author vcard">
+				<img alt="" src="Virtualenv%20Tutorial%20%7C%20SimonOnSoftware_files/5bfcb7342fa7d6e334b6bef43f61b37a.png" class="avatar avatar-44 photo" height="44" width="44"><cite class="fn">Brendan </cite><a href="http://simononsoftware.com/virtualenv-tutorial/#comment-33574"><time pubdate="" datetime="2013-08-08T16:57:07+00:00">August 8, 2013 at 4:57 pm</time></a>			</header><!-- .comment-meta -->
+
+			
+			<section class="comment-content comment">
+				<p>@Luke and @Nishant @Simon</p>
+<p>I got a similar issue but it only happened when I executed “yolk -l” 
+on the second environment without actually having it installed there. It
+ somehow was picking up my global Yolk and printing the full list of 
+installed packages, therefore making both environments look the same. </p>
+<p>Solution, make sure Yolk is installed in both environments 
+independently and then run “yolk -l” to check the installed list of 
+packages</p>
+							</section><!-- .comment-content -->
+
+			<div class="reply">
+							</div><!-- .reply -->
+		</article><!-- #comment-## -->
+	</li><!-- #comment-## -->
+	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-36693">
+		<article id="comment-36693" class="comment">
+			<header class="comment-meta comment-author vcard">
+				<img alt="" src="Virtualenv%20Tutorial%20%7C%20SimonOnSoftware_files/5c9009550cc3fa9f768eb33df071e8ef.png" class="avatar avatar-44 photo" height="44" width="44"><cite class="fn"><a href="http://stefanlance.com/" rel="external nofollow" class="url">Stefan</a> </cite><a href="http://simononsoftware.com/virtualenv-tutorial/#comment-36693"><time pubdate="" datetime="2013-09-16T17:34:44+00:00">September 16, 2013 at 5:34 pm</time></a>			</header><!-- .comment-meta -->
+
+			
+			<section class="comment-content comment">
+				<p>This is great. Thanks so much! Still works on Ubuntu 13.04.</p>
+							</section><!-- .comment-content -->
+
+			<div class="reply">
+							</div><!-- .reply -->
+		</article><!-- #comment-## -->
+	</li><!-- #comment-## -->
+		</ol><!-- .commentlist -->
+
+		
+	
+									<div id="respond" class="comment-respond">
+				<h3 id="reply-title" class="comment-reply-title">Leave a Reply <small><a rel="nofollow" id="cancel-comment-reply-link" href="http://simononsoftware.com/virtualenv-tutorial/#respond" style="display:none;">Cancel reply</a></small></h3>
+									<form action="http://simononsoftware.com/wp-comments-post.php" method="post" id="commentform" class="comment-form">
+																			<p class="comment-notes">Your email address will not be published. Required fields are marked <span class="required">*</span></p>							<p class="comment-form-author"><label for="author">Name <span class="required">*</span></label> <input id="author" name="author" size="30" aria-required="true" type="text"></p>
+<p class="comment-form-email"><label for="email">Email <span class="required">*</span></label> <input id="email" name="email" size="30" aria-required="true" type="text"></p>
+<p class="comment-form-url"><label for="url">Website</label> <input id="url" name="url" size="30" type="text"></p>
+												<p class="comment-form-comment"><label for="comment">Comment</label> <textarea id="comment" name="comment" cols="45" rows="8" aria-required="true"></textarea></p>						<p class="form-allowed-tags">You may use these <abbr title="HyperText Markup Language">HTML</abbr> tags and attributes:  <code>&lt;a
+ href="" title=""&gt; &lt;abbr title=""&gt; &lt;acronym title=""&gt; 
+&lt;b&gt; &lt;blockquote cite=""&gt; &lt;cite&gt; &lt;code&gt; &lt;del 
+datetime=""&gt; &lt;em&gt; &lt;i&gt; &lt;q cite=""&gt; &lt;strike&gt; 
+&lt;strong&gt; </code></p>						<p class="form-submit">
+							<input name="submit" id="submit" value="Post Comment" type="submit">
+							<input name="comment_post_ID" value="801" id="comment_post_ID" type="hidden">
+<input name="comment_parent" id="comment_parent" value="0" type="hidden">
+						</p>
+						<p style="display: none;"><input id="akismet_comment_nonce" name="akismet_comment_nonce" value="6e242874a2" type="hidden"></p>					</form>
+							</div><!-- #respond -->
+						
+</div><!-- #comments .comments-area -->
+			
+		</div><!-- #content -->
+	</div><!-- #primary -->
+
+
+			<div id="secondary" class="widget-area" role="complementary">
+			<aside id="search-2" class="widget widget_search"><form role="search" method="get" id="searchform" class="searchform" action="http://simononsoftware.com/">
+				<div>
+					<label class="screen-reader-text" for="s">Search for:</label>
+					<input name="s" id="s" type="text">
+					<input id="searchsubmit" value="Search" type="submit">
+				</div>
+			</form></aside><aside id="nav_menu-2" class="widget widget_nav_menu"><h3 class="widget-title">Pages</h3><div class="menu-pages-container"><ul id="menu-pages" class="menu"><li id="menu-item-1489" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1489"><a href="http://simononsoftware.com/cookies/">!!!COOKIES!!!</a></li>
+<li id="menu-item-1463" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1463"><a href="http://simononsoftware.com/current-writing/">Current Writing</a></li>
+<li id="menu-item-1460" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1460"><a href="http://simononsoftware.com/contact/">Contact</a></li>
+<li id="menu-item-1459" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1459"><a href="http://simononsoftware.com/github/">Github</a></li>
+</ul></div></aside>		<aside id="recent-posts-2" class="widget widget_recent_entries">		<h3 class="widget-title">Recent Posts</h3>		<ul>
+					<li>
+				<a href="http://simononsoftware.com/how-not-to-build-community/" title="How Not To Build Community">How Not To Build Community</a>
+						</li>
+					<li>
+				<a href="http://simononsoftware.com/postgres-as-nosql-database-with-validation/" title="Postgres as NoSQL Database With Validation">Postgres as NoSQL Database With Validation</a>
+						</li>
+					<li>
+				<a href="http://simononsoftware.com/great-presentation-postgresql-and-rails/" title="Great Presentation – PostgreSQL and Rails">Great Presentation – PostgreSQL and Rails</a>
+						</li>
+					<li>
+				<a href="http://simononsoftware.com/logging-in-python-presentation/" title="Logging in Python Presentation">Logging in Python Presentation</a>
+						</li>
+					<li>
+				<a href="http://simononsoftware.com/writing-better-tests-in-python/" title="Writing Better Tests in Python">Writing Better Tests in Python</a>
+						</li>
+					<li>
+				<a href="http://simononsoftware.com/current-writing/" title="Current Writing">Current Writing</a>
+						</li>
+					<li>
+				<a href="http://simononsoftware.com/the-importance-of-database-testing/" title="The Importance of Database Testing">The Importance of Database Testing</a>
+						</li>
+					<li>
+				<a href="http://simononsoftware.com/postgresql-versioning-policy/" title="PostgreSQL Versioning Policy">PostgreSQL Versioning Policy</a>
+						</li>
+					<li>
+				<a href="http://simononsoftware.com/unit-test-your-database/" title="Unit Test Your Database.">Unit Test Your Database.</a>
+						</li>
+					<li>
+				<a href="http://simononsoftware.com/how-to-ensure-there-is-one-row-part-2/" title="How to Ensure There is One Row… part 2">How to Ensure There is One Row… part 2</a>
+						</li>
+				</ul>
+		</aside><aside id="archives-3" class="widget widget_archive"><h3 class="widget-title">Archives</h3>		<ul>
+			<li><a href="http://simononsoftware.com/2013/07/" title="July 2013">July 2013</a></li>
+	<li><a href="http://simononsoftware.com/2013/06/" title="June 2013">June 2013</a></li>
+	<li><a href="http://simononsoftware.com/2012/04/" title="April 2012">April 2012</a></li>
+	<li><a href="http://simononsoftware.com/2011/11/" title="November 2011">November 2011</a></li>
+	<li><a href="http://simononsoftware.com/2011/10/" title="October 2011">October 2011</a></li>
+	<li><a href="http://simononsoftware.com/2011/09/" title="September 2011">September 2011</a></li>
+	<li><a href="http://simononsoftware.com/2011/08/" title="August 2011">August 2011</a></li>
+	<li><a href="http://simononsoftware.com/2011/06/" title="June 2011">June 2011</a></li>
+	<li><a href="http://simononsoftware.com/2011/05/" title="May 2011">May 2011</a></li>
+	<li><a href="http://simononsoftware.com/2011/04/" title="April 2011">April 2011</a></li>
+	<li><a href="http://simononsoftware.com/2011/03/" title="March 2011">March 2011</a></li>
+	<li><a href="http://simononsoftware.com/2011/02/" title="February 2011">February 2011</a></li>
+	<li><a href="http://simononsoftware.com/2011/01/" title="January 2011">January 2011</a></li>
+	<li><a href="http://simononsoftware.com/2010/12/" title="December 2010">December 2010</a></li>
+	<li><a href="http://simononsoftware.com/2010/10/" title="October 2010">October 2010</a></li>
+	<li><a href="http://simononsoftware.com/2010/09/" title="September 2010">September 2010</a></li>
+	<li><a href="http://simononsoftware.com/2010/08/" title="August 2010">August 2010</a></li>
+	<li><a href="http://simononsoftware.com/2010/07/" title="July 2010">July 2010</a></li>
+	<li><a href="http://simononsoftware.com/2010/06/" title="June 2010">June 2010</a></li>
+	<li><a href="http://simononsoftware.com/2010/05/" title="May 2010">May 2010</a></li>
+	<li><a href="http://simononsoftware.com/2010/04/" title="April 2010">April 2010</a></li>
+	<li><a href="http://simononsoftware.com/2010/03/" title="March 2010">March 2010</a></li>
+	<li><a href="http://simononsoftware.com/2010/02/" title="February 2010">February 2010</a></li>
+	<li><a href="http://simononsoftware.com/2009/12/" title="December 2009">December 2009</a></li>
+	<li><a href="http://simononsoftware.com/2009/11/" title="November 2009">November 2009</a></li>
+	<li><a href="http://simononsoftware.com/2009/10/" title="October 2009">October 2009</a></li>
+	<li><a href="http://simononsoftware.com/2009/09/" title="September 2009">September 2009</a></li>
+	<li><a href="http://simononsoftware.com/2009/08/" title="August 2009">August 2009</a></li>
+	<li><a href="http://simononsoftware.com/2009/07/" title="July 2009">July 2009</a></li>
+	<li><a href="http://simononsoftware.com/2009/01/" title="January 2009">January 2009</a></li>
+	<li><a href="http://simononsoftware.com/2008/12/" title="December 2008">December 2008</a></li>
+	<li><a href="http://simononsoftware.com/2008/11/" title="November 2008">November 2008</a></li>
+	<li><a href="http://simononsoftware.com/2008/10/" title="October 2008">October 2008</a></li>
+	<li><a href="http://simononsoftware.com/2008/09/" title="September 2008">September 2008</a></li>
+		</ul>
+</aside><aside id="categories-323452492" class="widget widget_categories"><h3 class="widget-title">Categories</h3>		<ul>
+	<li class="cat-item cat-item-3"><a rel="nofollow" href="http://simononsoftware.com/category/database/" title="View all posts filed under database">database</a>
+</li>
+	<li class="cat-item cat-item-4"><a rel="nofollow" href="http://simononsoftware.com/category/programming/" title="View all posts filed under programming">programming</a>
+</li>
+	<li class="cat-item cat-item-5"><a rel="nofollow" href="http://simononsoftware.com/category/security/" title="View all posts filed under security">security</a>
+</li>
+	<li class="cat-item cat-item-6"><a rel="nofollow" href="http://simononsoftware.com/category/software/" title="View all posts filed under software">software</a>
+</li>
+	<li class="cat-item cat-item-7"><a rel="nofollow" href="http://simononsoftware.com/category/web/" title="View all posts filed under web">web</a>
+</li>
+	<li class="cat-item cat-item-8"><a rel="nofollow" href="http://simononsoftware.com/category/wtf/" title="View all posts filed under wtf">wtf</a>
+</li>
+		</ul>
+</aside><aside id="better-tag-cloud" class="widget widget_nktagcloud"><h3 class="widget-title">Tags</h3><ul class="wp-tag-cloud">
+	<li><a href="http://simononsoftware.com/tag/architecture/" class="tag-link-36 nktagcloud-10" title="2 topics" rel="tag" style="font-size: 10pt;">architecture</a><span class="nktagcloud-separator"> </span></li>
+	<li><a href="http://simononsoftware.com/tag/benchmark/" class="tag-link-84 nktagcloud-10" title="2 topics" rel="tag" style="font-size: 10pt;">benchmark</a><span class="nktagcloud-separator"> </span></li>
+	<li><a href="http://simononsoftware.com/tag/book/" class="tag-link-10 nktagcloud-10" title="2 topics" rel="tag" style="font-size: 10pt;">book</a><span class="nktagcloud-separator"> </span></li>
+	<li><a href="http://simononsoftware.com/tag/c/" class="tag-link-11 nktagcloud-10" title="3 topics" rel="tag" style="font-size: 10pt;">C++</a><span class="nktagcloud-separator"> </span></li>
+	<li><a href="http://simononsoftware.com/tag/collation/" class="tag-link-12 nktagcloud-10" title="2 topics" rel="tag" style="font-size: 10pt;">collation</a><span class="nktagcloud-separator"> </span></li>
+	<li><a href="http://simononsoftware.com/tag/database/" class="tag-link-3 nktagcloud-10" title="47 topics" rel="tag" style="font-size: 10pt;">database</a><span class="nktagcloud-separator"> </span></li>
+	<li><a href="http://simononsoftware.com/tag/django/" class="tag-link-15 nktagcloud-10" title="3 topics" rel="tag" style="font-size: 10pt;">django</a><span class="nktagcloud-separator"> </span></li>
+	<li><a href="http://simononsoftware.com/tag/efficiency/" class="tag-link-52 nktagcloud-10" title="2 topics" rel="tag" style="font-size: 10pt;">efficiency</a><span class="nktagcloud-separator"> </span></li>
+	<li><a href="http://simononsoftware.com/tag/fun/" class="tag-link-42 nktagcloud-10" title="11 topics" rel="tag" style="font-size: 10pt;">fun</a><span class="nktagcloud-separator"> </span></li>
+	<li><a href="http://simononsoftware.com/tag/index/" class="tag-link-100 nktagcloud-10" title="2 topics" rel="tag" style="font-size: 10pt;">index</a><span class="nktagcloud-separator"> </span></li>
+	<li><a href="http://simononsoftware.com/tag/java/" class="tag-link-83 nktagcloud-10" title="4 topics" rel="tag" style="font-size: 10pt;">java</a><span class="nktagcloud-separator"> </span></li>
+	<li><a href="http://simononsoftware.com/tag/linkedin/" class="tag-link-79 nktagcloud-10" title="7 topics" rel="tag" style="font-size: 10pt;">linkedin</a><span class="nktagcloud-separator"> </span></li>
+	<li><a href="http://simononsoftware.com/tag/linux/" class="tag-link-63 nktagcloud-10" title="2 topics" rel="tag" style="font-size: 10pt;">linux</a><span class="nktagcloud-separator"> </span></li>
+	<li><a href="http://simononsoftware.com/tag/merb/" class="tag-link-19 nktagcloud-10" title="2 topics" rel="tag" style="font-size: 10pt;">merb</a><span class="nktagcloud-separator"> </span></li>
+	<li><a href="http://simononsoftware.com/tag/merb-ruby/" class="tag-link-31 nktagcloud-10" title="2 topics" rel="tag" style="font-size: 10pt;">merb ruby</a><span class="nktagcloud-separator"> </span></li>
+	<li><a href="http://simononsoftware.com/tag/mysql/" class="tag-link-20 nktagcloud-10" title="6 topics" rel="tag" style="font-size: 10pt;">mysql</a><span class="nktagcloud-separator"> </span></li>
+	<li><a href="http://simononsoftware.com/tag/optimization/" class="tag-link-94 nktagcloud-10" title="4 topics" rel="tag" style="font-size: 10pt;">optimization</a><span class="nktagcloud-separator"> </span></li>
+	<li><a href="http://simononsoftware.com/tag/oracle/" class="tag-link-21 nktagcloud-10" title="2 topics" rel="tag" style="font-size: 10pt;">oracle</a><span class="nktagcloud-separator"> </span></li>
+	<li><a href="http://simononsoftware.com/tag/orm/" class="tag-link-48 nktagcloud-10" title="3 topics" rel="tag" style="font-size: 10pt;">orm</a><span class="nktagcloud-separator"> </span></li>
+	<li><a href="http://simononsoftware.com/tag/perl/" class="tag-link-38 nktagcloud-10" title="8 topics" rel="tag" style="font-size: 10pt;">perl</a><span class="nktagcloud-separator"> </span></li>
+	<li><a href="http://simononsoftware.com/tag/php/" class="tag-link-32 nktagcloud-10" title="4 topics" rel="tag" style="font-size: 10pt;">php</a><span class="nktagcloud-separator"> </span></li>
+	<li><a href="http://simononsoftware.com/tag/plpgsql/" class="tag-link-60 nktagcloud-10" title="3 topics" rel="tag" style="font-size: 10pt;">pl/pgsql</a><span class="nktagcloud-separator"> </span></li>
+	<li><a href="http://simononsoftware.com/tag/postgresql/" class="tag-link-23 nktagcloud-10" title="37 topics" rel="tag" style="font-size: 10pt;">postgresql</a><span class="nktagcloud-separator"> </span></li>
+	<li><a href="http://simononsoftware.com/tag/programming/" class="tag-link-4 nktagcloud-10" title="21 topics" rel="tag" style="font-size: 10pt;">programming</a><span class="nktagcloud-separator"> </span></li>
+	<li><a href="http://simononsoftware.com/tag/python/" class="tag-link-24 nktagcloud-10" title="9 topics" rel="tag" style="font-size: 10pt;">python</a><span class="nktagcloud-separator"> </span></li>
+	<li><a href="http://simononsoftware.com/tag/rails/" class="tag-link-25 nktagcloud-10" title="5 topics" rel="tag" style="font-size: 10pt;">rails</a><span class="nktagcloud-separator"> </span></li>
+	<li><a href="http://simononsoftware.com/tag/ror/" class="tag-link-26 nktagcloud-10" title="3 topics" rel="tag" style="font-size: 10pt;">ROR</a><span class="nktagcloud-separator"> </span></li>
+	<li><a href="http://simononsoftware.com/tag/ruby/" class="tag-link-27 nktagcloud-10" title="4 topics" rel="tag" style="font-size: 10pt;">ruby</a><span class="nktagcloud-separator"> </span></li>
+	<li><a href="http://simononsoftware.com/tag/security/" class="tag-link-5 nktagcloud-10" title="3 topics" rel="tag" style="font-size: 10pt;">security</a><span class="nktagcloud-separator"> </span></li>
+	<li><a href="http://simononsoftware.com/tag/sql/" class="tag-link-49 nktagcloud-10" title="7 topics" rel="tag" style="font-size: 10pt;">sql</a><span class="nktagcloud-separator"> </span></li>
+	<li><a href="http://simononsoftware.com/tag/tdd/" class="tag-link-54 nktagcloud-10" title="3 topics" rel="tag" style="font-size: 10pt;">tdd</a><span class="nktagcloud-separator"> </span></li>
+	<li><a href="http://simononsoftware.com/tag/testing/" class="tag-link-53 nktagcloud-10" title="3 topics" rel="tag" style="font-size: 10pt;">testing</a><span class="nktagcloud-separator"> </span></li>
+	<li><a href="http://simononsoftware.com/tag/tools/" class="tag-link-35 nktagcloud-10" title="2 topics" rel="tag" style="font-size: 10pt;">tools</a><span class="nktagcloud-separator"> </span></li>
+	<li><a href="http://simononsoftware.com/tag/trigger/" class="tag-link-57 nktagcloud-10" title="2 topics" rel="tag" style="font-size: 10pt;">trigger</a><span class="nktagcloud-separator"> </span></li>
+	<li><a href="http://simononsoftware.com/tag/ubuntu/" class="tag-link-66 nktagcloud-10" title="2 topics" rel="tag" style="font-size: 10pt;">ubuntu</a><span class="nktagcloud-separator"> </span></li>
+	<li><a href="http://simononsoftware.com/tag/unique-index/" class="tag-link-101 nktagcloud-10" title="2 topics" rel="tag" style="font-size: 10pt;">unique index</a><span class="nktagcloud-separator"> </span></li>
+	<li><a href="http://simononsoftware.com/tag/vim/" class="tag-link-30 nktagcloud-10" title="4 topics" rel="tag" style="font-size: 10pt;">vim</a><span class="nktagcloud-separator"> </span></li>
+	<li><a href="http://simononsoftware.com/tag/web/" class="tag-link-7 nktagcloud-10" title="2 topics" rel="tag" style="font-size: 10pt;">web</a><span class="nktagcloud-separator"> </span></li>
+	<li><a href="http://simononsoftware.com/tag/wtf/" class="tag-link-8 nktagcloud-10" title="13 topics" rel="tag" style="font-size: 10pt;">wtf</a></li>
+</ul>
+</aside>		</div><!-- #secondary -->
+		</div><!-- #main .wrapper -->
+	<footer id="colophon" role="contentinfo">
+		<div class="site-info">
+						<a href="http://wordpress.org/" title="Semantic Personal Publishing Platform" rel="generator">Proudly powered by WordPress</a>
+		</div><!-- .site-info -->
+	</footer><!-- #colophon -->
+</div><!-- #page -->
+
+<a href="http://www.nkuttler.de/wordpress-plugin/a-better-tag-cloud-widget/">Better Tag Cloud</a><br><script type="text/javascript" src="Virtualenv%20Tutorial%20%7C%20SimonOnSoftware_files/jquery_002.js"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var _wpcf7 = {"loaderUrl":"http:\/\/simononsoftware.com\/wp-content\/plugins\/contact-form-7\/images\/ajax-loader.gif","sending":"Sending ...","cached":"1"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="Virtualenv%20Tutorial%20%7C%20SimonOnSoftware_files/scripts.js"></script>
+<script type="text/javascript" src="Virtualenv%20Tutorial%20%7C%20SimonOnSoftware_files/navigation.js"></script>
+
+
+</body></html>
+<!-- Performance optimized by W3 Total Cache. Learn more: http://www.w3-edge.com/wordpress-plugins/
+
+Page Caching using disk: enhanced
+Object Caching 1858/1903 objects using disk
+
+ Served from: simononsoftware.com @ 2013-10-22 06:08:51 by W3 Total Cache -->

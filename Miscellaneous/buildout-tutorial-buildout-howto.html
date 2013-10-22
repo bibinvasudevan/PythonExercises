@@ -1,0 +1,2488 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html dir="ltr" xmlns="http://www.w3.org/1999/xhtml" xmlns:b="http://www.google.com/2005/gml/b" xmlns:data="http://www.google.com/2005/gml/data" xmlns:expr="http://www.google.com/2005/gml/expr"><head>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<script async="" src="buildout-tutorial-buildout-howto_files/cbgapi_002.js"></script><script async="" src="buildout-tutorial-buildout-howto_files/cbgapi.js"></script><script type="text/javascript">(function() { var b=window,e="jstiming",g="tick";(function(){function d(a){this.t={};this.tick=function(a,d,c){c=void 0!=c?c:(new Date).getTime();this.t[a]=[c,d]};this[g]("start",null,a)}var a=new d;b.jstiming={Timer:d,load:a};if(b.performance&&b.performance.timing){var a=b.performance.timing,c=b[e].load,f=a.navigationStart,a=a.responseStart;0<f&&a>=f&&(c[g]("_wtsrt",void 0,f),c[g]("wtsrt_","_wtsrt",a),c[g]("tbsd_","wtsrt_"))}try{a=null,b.chrome&&b.chrome.csi&&(a=Math.floor(b.chrome.csi().pageT),c&&0<f&&(c[g]("_tbnd",void 0,b.chrome.csi().startE),
+c[g]("tbnd_","_tbnd",f))),null==a&&b.gtbExternal&&(a=b.gtbExternal.pageT()),null==a&&b.external&&(a=b.external.pageT,c&&0<f&&(c[g]("_tbnd",void 0,b.external.startE),c[g]("tbnd_","_tbnd",f))),a&&(b[e].pt=a)}catch(l){}})();b.tickAboveFold=function(d){var a=0;if(d.offsetParent){do a+=d.offsetTop;while(d=d.offsetParent)}d=a;750>=d&&b[e].load[g]("aft")};var h=!1;function k(){h||(h=!0,b[e].load[g]("firstScrollTime"))}b.addEventListener?b.addEventListener("scroll",k,!1):b.attachEvent("onscroll",k);
+ })();</script>
+<meta content="blogger" name="generator">
+<link href="http://renesd.blogspot.in/favicon.ico" rel="icon" type="image/x-icon">
+<link href="http://renesd.blogspot.com/2008/05/buildout-tutorial-buildout-howto.html" rel="canonical">
+<link rel="alternate" type="application/atom+xml" title="making apps, making webs. - Atom" href="http://renesd.blogspot.com/feeds/posts/default">
+<link rel="alternate" type="application/rss+xml" title="making apps, making webs. - RSS" href="http://renesd.blogspot.com/feeds/posts/default?alt=rss">
+<link rel="service.post" type="application/atom+xml" title="making apps, making webs. - Atom" href="http://www.blogger.com/feeds/10678074/posts/default">
+
+<link rel="alternate" type="application/atom+xml" title="making apps, making webs. - Atom" href="http://renesd.blogspot.com/feeds/526488297513136824/comments/default">
+<link href="https://plus.google.com/113016169502668158732" rel="publisher">
+<!--[if IE]> <script> (function() { var html5 = ("abbr,article,aside,audio,canvas,datalist,details," + "figure,footer,header,hgroup,mark,menu,meter,nav,output," + "progress,section,time,video").split(','); for (var i = 0; i < html5.length; i++) { document.createElement(html5[i]); } try { document.execCommand('BackgroundImageCache', false, true); } catch(e) {} })(); </script> <![endif]-->
+<title>buildout tutorial.  buildout howto.  buildout review.</title>
+<link type="text/css" rel="stylesheet" href="buildout-tutorial-buildout-howto_files/1738504331-widget_css_bundle.css">
+<link type="text/css" rel="stylesheet" href="buildout-tutorial-buildout-howto_files/authorization.css">
+<style id="page-skin-1" type="text/css"><!--
+/*
+-----------------------------------------------
+Blogger Template Style
+Name:     Minima
+Date:     26 Feb 2004
+Updated by: Blogger Team
+----------------------------------------------- */
+/* Variable definitions
+====================
+<Variable name="bgcolor" description="Page Background Color"
+type="color" default="#fff">
+<Variable name="textcolor" description="Text Color"
+type="color" default="#333">
+<Variable name="linkcolor" description="Link Color"
+type="color" default="#58a">
+<Variable name="pagetitlecolor" description="Blog Title Color"
+type="color" default="#666">
+<Variable name="descriptioncolor" description="Blog Description Color"
+type="color" default="#999">
+<Variable name="titlecolor" description="Post Title Color"
+type="color" default="#c60">
+<Variable name="bordercolor" description="Border Color"
+type="color" default="#ccc">
+<Variable name="sidebarcolor" description="Sidebar Title Color"
+type="color" default="#999">
+<Variable name="sidebartextcolor" description="Sidebar Text Color"
+type="color" default="#666">
+<Variable name="visitedlinkcolor" description="Visited Link Color"
+type="color" default="#999">
+<Variable name="bodyfont" description="Text Font"
+type="font" default="normal normal 100% Georgia, Serif">
+<Variable name="headerfont" description="Sidebar Title Font"
+type="font"
+default="normal normal 78% 'Trebuchet MS',Trebuchet,Arial,Verdana,Sans-serif">
+<Variable name="pagetitlefont" description="Blog Title Font"
+type="font"
+default="normal normal 200% Georgia, Serif">
+<Variable name="descriptionfont" description="Blog Description Font"
+type="font"
+default="normal normal 78% 'Trebuchet MS', Trebuchet, Arial, Verdana, Sans-serif">
+<Variable name="postfooterfont" description="Post Footer Font"
+type="font"
+default="normal normal 78% 'Trebuchet MS', Trebuchet, Arial, Verdana, Sans-serif">
+<Variable name="startSide" description="Side where text starts in blog language"
+type="automatic" default="left">
+<Variable name="endSide" description="Side where text ends in blog language"
+type="automatic" default="right">
+*/
+/* Use this with templates/template-twocol.html */
+body {
+background:#ffffff;
+margin:0;
+color:#333333;
+font:x-small Georgia Serif;
+font-size/* */:/**/small;
+font-size: /**/small;
+text-align: center;
+}
+pre {
+white-space: pre-wrap; /* css-3 */
+white-space: -moz-pre-wrap !important; /* Mozilla, since 1999 */
+white-space: -pre-wrap; /* Opera 4-6 */
+white-space: -o-pre-wrap; /* Opera 7 */
+word-wrap: break-word; /* Internet Explorer 5.5+ */
+}
+a:link {
+color:#5588aa;
+text-decoration:none;
+}
+a:visited {
+color:#999999;
+text-decoration:none;
+}
+a:hover {
+color:#cc6600;
+text-decoration:underline;
+}
+a img {
+border-width:0;
+}
+/* Header
+-----------------------------------------------
+*/
+#header-wrapper {
+width:660px;
+margin:0 auto 10px;
+border:1px solid #cccccc;
+}
+#header-inner {
+background-position: center;
+margin-left: auto;
+margin-right: auto;
+}
+#header {
+margin: 5px;
+border: 1px solid #cccccc;
+text-align: center;
+color:#666666;
+}
+#header h1,
+#header h2,
+#header h3
+{
+margin:5px 5px 0;
+padding:15px 20px .25em;
+line-height:1.2em;
+text-transform:uppercase;
+letter-spacing:.2em;
+font: normal normal 200% Georgia, Serif;
+}
+#header a {
+color:#666666;
+text-decoration:none;
+}
+#header a:hover {
+color:#666666;
+}
+#header .description {
+margin:0 5px 5px;
+padding:0 20px 15px;
+max-width:700px;
+text-transform:uppercase;
+letter-spacing:.2em;
+line-height: 1.4em;
+font: normal normal 78% 'Trebuchet MS', Trebuchet, Arial, Verdana, Sans-serif;
+color: #999999;
+}
+#header img {
+margin-left: auto;
+margin-right: auto;
+}
+/* Outer-Wrapper
+----------------------------------------------- */
+#outer-wrapper {
+width: 660px;
+margin:0 auto;
+padding:10px;
+text-align:left;
+font: normal normal 100% Georgia, Serif;
+}
+#main-wrapper {
+width: 410px;
+float: left;
+word-wrap: break-word; /* fix for long text breaking sidebar float in IE */
+overflow: hidden;     /* fix for long non-text content breaking IE sidebar float */
+}
+#sidebar-wrapper {
+width: 220px;
+float: right;
+word-wrap: break-word; /* fix for long text breaking sidebar float in IE */
+overflow: hidden;      /* fix for long non-text content breaking IE sidebar float */
+}
+/* Headings
+----------------------------------------------- */
+h1, h2 {
+margin:1.5em 0 .75em;
+font:normal normal 78% 'Trebuchet MS',Trebuchet,Arial,Verdana,Sans-serif;
+line-height: 1.4em;
+text-transform:uppercase;
+letter-spacing:.2em;
+color:#999999;
+}
+/* Posts
+-----------------------------------------------
+*/
+h2.date-header {
+margin:1.5em 0 .5em;
+}
+.post {
+margin:.5em 0 1.5em;
+border-bottom:1px dotted #cccccc;
+padding-bottom:1.5em;
+}
+.post h3, .post h2 {
+margin:.25em 0 0;
+padding:0 0 4px;
+font-size:140%;
+font-weight:normal;
+line-height:1.4em;
+color:#cc6600;
+}
+.post h3 a, .post h3 a:visited, .post h3 strong {
+display:block;
+text-decoration:none;
+color:#cc6600;
+font-weight:normal;
+}
+.post h3 strong, .post h3 a:hover {
+color:#333333;
+}
+.post-body {
+margin:0 0 .75em;
+line-height:1.6em;
+}
+.post-body blockquote {
+line-height:1.3em;
+}
+.post-footer {
+margin: .75em 0;
+color:#999999;
+text-transform:uppercase;
+letter-spacing:.1em;
+font: normal normal 78% 'Trebuchet MS', Trebuchet, Arial, Verdana, Sans-serif;
+line-height: 1.4em;
+}
+.comment-link {
+margin-left:.6em;
+}
+.post img, table.tr-caption-container {
+padding:4px;
+border:1px solid #cccccc;
+}
+.tr-caption-container img {
+border: none;
+padding: 0;
+}
+.post blockquote {
+margin:1em 20px;
+}
+.post blockquote p {
+margin:.75em 0;
+}
+/* Comments
+----------------------------------------------- */
+#comments h4 {
+margin:1em 0;
+font-weight: bold;
+line-height: 1.4em;
+text-transform:uppercase;
+letter-spacing:.2em;
+color: #999999;
+}
+#comments-block {
+margin:1em 0 1.5em;
+line-height:1.6em;
+}
+#comments-block .comment-author {
+margin:.5em 0;
+}
+#comments-block .comment-body {
+margin:.25em 0 0;
+}
+#comments-block .comment-footer {
+margin:-.25em 0 2em;
+line-height: 1.4em;
+text-transform:uppercase;
+letter-spacing:.1em;
+}
+#comments-block .comment-body p {
+margin:0 0 .75em;
+}
+.deleted-comment {
+font-style:italic;
+color:gray;
+}
+#blog-pager-newer-link {
+float: left;
+}
+#blog-pager-older-link {
+float: right;
+}
+#blog-pager {
+text-align: center;
+}
+.feed-links {
+clear: both;
+line-height: 2.5em;
+}
+/* Sidebar Content
+----------------------------------------------- */
+.sidebar {
+color: #666666;
+line-height: 1.5em;
+}
+.sidebar ul {
+list-style:none;
+margin:0 0 0;
+padding:0 0 0;
+}
+.sidebar li {
+margin:0;
+padding-top:0;
+padding-right:0;
+padding-bottom:.25em;
+padding-left:15px;
+text-indent:-15px;
+line-height:1.5em;
+}
+.sidebar .widget, .main .widget {
+border-bottom:1px dotted #cccccc;
+margin:0 0 1.5em;
+padding:0 0 1.5em;
+}
+.main .Blog {
+border-bottom-width: 0;
+}
+/* Profile
+----------------------------------------------- */
+.profile-img {
+float: left;
+margin-top: 0;
+margin-right: 5px;
+margin-bottom: 5px;
+margin-left: 0;
+padding: 4px;
+border: 1px solid #cccccc;
+}
+.profile-data {
+margin:0;
+text-transform:uppercase;
+letter-spacing:.1em;
+font: normal normal 78% 'Trebuchet MS', Trebuchet, Arial, Verdana, Sans-serif;
+color: #999999;
+font-weight: bold;
+line-height: 1.6em;
+}
+.profile-datablock {
+margin:.5em 0 .5em;
+}
+.profile-textblock {
+margin: 0.5em 0;
+line-height: 1.6em;
+}
+.profile-link {
+font: normal normal 78% 'Trebuchet MS', Trebuchet, Arial, Verdana, Sans-serif;
+text-transform: uppercase;
+letter-spacing: .1em;
+}
+/* Footer
+----------------------------------------------- */
+#footer {
+width:660px;
+clear:both;
+margin:0 auto;
+padding-top:15px;
+line-height: 1.6em;
+text-transform:uppercase;
+letter-spacing:.1em;
+text-align: center;
+}
+
+--></style>
+<script type="text/javascript">var a=navigator,b="userAgent",c="indexOf",f="&m=1",g="(^|&)m=",h="?",k="?m=1";function l(){var d=window.location.href,e=d.split(h);switch(e.length){case 1:return d+k;case 2:return 0<=e[1].search(g)?null:d+f;default:return null}}if(-1!=a[b][c]("Mobile")&&-1!=a[b][c]("WebKit")&&-1==a[b][c]("iPad")||-1!=a[b][c]("Opera Mini")||-1!=a[b][c]("IEMobile")){var m=l();m&&window.location.replace(m)};
+</script><script type="text/javascript">
+if (window.jstiming) window.jstiming.load.tick('headEnd');
+</script><script src="buildout-tutorial-buildout-howto_files/google_top_exp.js" type="text/javascript"></script><style>.gc-bubbleDefault{background-color:transparent !important;text-align:left;padding:0 !important;margin:0 !important;border:0 !important;table-layout:auto !important}.gc-reset{background-color:transparent !important;border:0 !important;padding:0 !important;margin:0 !important;text-align:left}.pls-bubbleTop{border-bottom:1px solid #ccc !important}.pls-topTail,.pls-vertShimLeft,.pls-contentLeft{background-image:url(//ssl.gstatic.com/s2/oz/images/stars/po/bubblev1/border_3.gif) !important}.pls-topTail{background-repeat:repeat-x !important;background-position:bottom !important}.pls-vertShim{background-color:#fff !important;text-align:right}.tbl-grey .pls-vertShim{background-color:#f5f5f5 !important}.pls-vertShimLeft{background-repeat:repeat-y !important;background-position:right !important;height:4px}.pls-vertShimRight{height:4px}.pls-confirm-container .pls-vertShim{background-color:#fff3c2 !important}.pls-contentWrap{background-color:#fff !important;position:relative !important;vertical-align:top}.pls-contentLeft{background-repeat:repeat-y;background-position:right;vertical-align:top}.pls-dropRight{background-image:url(//ssl.gstatic.com/s2/oz/images/stars/po/bubblev1/bubbleDropR_3.png) !important;background-repeat:repeat-y !important;vertical-align:top}.pls-vert,.pls-tailleft,.pls-dropTR .pls-dropBR,.pls-dropBL,.pls-vert img{vertical-align:top}.pls-dropBottom{background-image:url(//ssl.gstatic.com/s2/oz/images/stars/po/bubblev1/bubbleDropB_3.png) !important;background-repeat:repeat-x !important;width:100%;vertical-align:top}.pls-topLeft{background:inherit !important;text-align:right;vertical-align:bottom}.pls-topRight{background:inherit !important;text-align:left;vertical-align:bottom}.pls-bottomLeft{background:inherit !important;text-align:right}.pls-bottomRight{background:inherit !important;text-align:left;vertical-align:top}.pls-tailtop,.pls-tailright,.pls-tailbottom,.pls-tailleft{display:none;position:relative}.pls-tailbottom,.pls-tailtop,.pls-tailright,.pls-tailleft,.pls-dropTR,.pls-dropBR,.pls-dropBL{background-image:url(//ssl.gstatic.com/s2/oz/images/stars/po/bubblev1/bubbleSprite_3.png) !important;background-repeat:no-repeat}.tbl-grey .pls-tailbottom,.tbl-grey .pls-tailtop,.tbl-grey .pls-tailright,.tbl-grey .pls-tailleft,.tbl-grey .pls-dropTR,.tbl-grey .pls-dropBR,.tbl-grey .pls-dropBL{background-image:url(//ssl.gstatic.com/s2/oz/images/stars/po/bubblev1/bubbleSprite-grey.png) !important}.pls-tailbottom{background-position:-23px 0}.pls-confirm-container .pls-tailbottom{background-position:-23px -10px}.pls-tailtop{background-position:-19px -20px}.pls-tailright{background-position:0 0}.pls-tailleft{background-position:-10px 0}.pls-tailtop{vertical-align:top}.gc-bubbleDefault td{line-height:0;font-size:0}.pls-topLeft img,.pls-topRight img,.pls-tailbottom{vertical-align:bottom}.pls-bottomLeft img,.bubbleDropTR,.pls-dropBottomL img,.pls-dropBottom img,.pls-dropBottomR img,.pls-bottomLeft{vertical-align:top}.pls-dropTR{background-position:0 -22px}.pls-dropBR{background-position:0 -27px}.pls-dropBL{background-position:0 -16px}.pls-spacertop,.pls-spacerright,.pls-spacerbottom,.pls-spacerleft{position:static !important}.pls-spinner{bottom:0;position:absolute;left:0;margin:auto;right:0;top:0}</style></head>
+<body>
+<div class="navbar section" id="navbar"><div class="widget Navbar" id="Navbar1"><script type="text/javascript">
+    function setAttributeOnload(object, attribute, val) {
+      if(window.addEventListener) {
+        window.addEventListener('load',
+          function(){ object[attribute] = val; }, false);
+      } else {
+        window.attachEvent('onload', function(){ object[attribute] = val; });
+      }
+    }
+  </script>
+<div style="display: none;" id="navbar-iframe-container"><iframe src="buildout-tutorial-buildout-howto_files/navbar.html" name="navbar-iframe" id="navbar-iframe" vspace="0" tabindex="0" style="" marginwidth="0" marginheight="0" hspace="0" frameborder="0" scrolling="no" width="100%"></iframe></div>
+<script gapi_processed="true" type="text/javascript" src="navbar_data/plusone.js"></script>
+<script type="text/javascript">
+        gapi.load("iframes-styles-bubble", function() {
+          if (window.iframes && iframes.open) {
+            iframes.open(
+                '//www.blogger.com/navbar.g?targetBlogID\07510678074\46blogName\75making+apps,+making+webs.\46publishMode\75PUBLISH_MODE_BLOGSPOT\46navbarType\75BLUE\46layoutType\75LAYOUTS\46searchRoot\75http://renesd.blogspot.com/search\46blogLocale\75en_US\46v\0752\46homepageUrl\75http://renesd.blogspot.com/\46targetPostID\075526488297513136824\46blogPostOrPageUrl\75http://renesd.blogspot.com/2008/05/buildout-tutorial-buildout-howto.html\46blogFollowUrl\75https://plus.google.com/113016169502668158732\46vt\0754156762154701263540',
+                {
+                  container: "navbar-iframe-container",
+                  id: "navbar-iframe"
+                },
+                {
+                });
+          }
+        });
+      </script><script type="text/javascript">
+(function() {
+var script = document.createElement('script');
+script.type = 'text/javascript';
+script.src = '//pagead2.googlesyndication.com/pagead/js/google_top_exp.js';
+var head = document.getElementsByTagName('head')[0];
+if (head) {
+head.appendChild(script);
+}})();
+</script>
+</div></div>
+<script>
+function getElement(id) {
+    return document.getElementById ? document.getElementById(id) : document.all ? document.all(id) : null;
+}
+
+el = getElement("navbar-iframe-container");
+
+if(el) {
+    el.style.display = "none";
+    //el.style.visibility = "hidden";
+}
+
+</script>
+<div id="outer-wrapper"><div id="wrap2">
+<!-- skip links for text browsers -->
+<span id="skiplinks" style="display:none;">
+<a href="#main">skip to main </a> |
+      <a href="#sidebar">skip to sidebar</a>
+</span>
+<div id="header-wrapper">
+<div class="header section" id="header"><div class="widget Header" id="Header1">
+<div id="header-inner">
+<div class="titlewrapper">
+<h1 class="title">
+<a href="http://renesd.blogspot.in/">making apps, making webs.</a>
+</h1>
+</div>
+<div class="descriptionwrapper">
+<p class="description"><span>About making apps, and web development.  
+Indie, shareware, open source, freelance are some of the topics I will 
+bore you with.  So BEWARE!</span></p>
+</div>
+</div>
+</div></div>
+</div>
+<div id="content-wrapper">
+<div id="crosscol-wrapper" style="text-align:center">
+<div class="crosscol section" id="crosscol"></div>
+</div>
+<div id="main-wrapper">
+<div class="main section" id="main"><div class="widget Blog" id="Blog1">
+<div class="blog-posts hfeed">
+<!-- google_ad_section_start -->
+<h2 class="date-header">Saturday, May 31, 2008</h2>
+<div class="post hentry">
+<a name="526488297513136824"></a>
+<h3 class="post-title entry-title">
+<a href="http://renesd.blogspot.in/2008/05/buildout-tutorial-buildout-howto.html">buildout tutorial.  buildout howto.  buildout review.</a>
+</h3>
+<div class="post-header-line-1"></div>
+<div class="post-body entry-content">
+This post is a review, a tutorial, and a howto - for and about buildout - a software development tool for the python language.<br><br>This document aims to answer the question... "<b><i>buildout? WTF?</i></b>".<br><br>In
+ short: buildout automates python project building.  Buildout does 
+everything needed to get your application in a state for running in its 
+own sandbox.<br><h4>Super quick start instructions for using buildout...</h4><li>get the source from <a href="http://pypi.python.org/pypi/zc.buildout">http://pypi.python.org/pypi/zc.buildout</a></li><li>Make
+ a new directory for your project, then copy the bootstrap/bootstrap.py 
+file out of the zc.buildout source into your new project directory</li><li>create a "buildout.cfg" file to go with the bootstrap.py file.  Here is a simple one for your package called "YOURPACKAGENAME":<br></li><pre>[buildout]<br>parts = test py<br>develop = .<br><br>[test]<br>recipe = zc.recipe.testrunner<br>eggs = YOURPACKAGENAME<br></pre><li>Run
+ "python bootstrap.py" in your empty project directory(with the 
+buildout.cfg file in there). &nbsp;This will get buildout locally into 
+your sandbox ready to use - without touching the rest of your python 
+installation.</li><li>Now you have a basic setup for "building out" your application.<br></li><br><h4>What is buildout?</h4>"The
+ Buildout project provides support for creating applications, especially
+ Python applications. It provides tools for assembling applications from
+ multiple parts, Python or otherwise. An application may actually 
+contain multiple programs, processes, and configuration settings."<br><h4>Why should I care about buildout?</h4>Automation of building your applications is what buildout is about.<br><br>To
+ be able to build your application easily on multiple machines, you 
+don't want to have to install and setup 38 different programs before you
+ can build it.<br><br><div>Buildout keeps your project separate from the
+ main python setup. &nbsp;So it doesn't install things into the main 
+python distribution. &nbsp;This is good because it keeps separate 
+applications mucking each other up. &nbsp;It's also good so you don't 
+need to have a root user account to install python modules.<br><div><br></div><div>Buildout
+ can be extended through the use of recipes. &nbsp;Recipes are like 
+plugins, and they do all sorts of things. &nbsp;You can see a&nbsp;list 
+of <a href="http://pypi.python.org/pypi?:action=browse&amp;show=all&amp;c=512">buildout recipes</a> on the python package index (pypi).</div><div><br>buildout can do lots of other things too - but these are the core concepts.<br><br><h4>Where is buildout? Links to buildout pages.</h4><li>The buildout url: <a href="http://pypi.python.org/pypi/zc.buildout">http://pypi.python.org/pypi/zc.buildout</a><br></li><li>A <a href="http://grok.zope.org/documentation/tutorial/introduction-to-zc.buildout">buildout tutorial</a>
+ which seems better than the official documentation - but hard to find 
+with search engines.  It's written as a tutorial to give to people - not
+ really to read online.</li><li><a href="http://plone.org/documentation/tutorial/buildout">Plone buildout tutorial.</a> - this one is specific to plone.</li><li>subversion repository for zc.buildout: <a href="http://svn.zope.org/zc.buildout/">http://svn.zope.org/zc.buildout/</a><br></li><li>Licence: <a href="http://www.opensource.org/licenses/zpl.php">The Zope Public License</a></li><li><a href="http://www.ohloh.net/projects/compare?project_0=zc.buildout">http://www.ohloh.net/projects/compare?project_0=zc.buildout</a></li><br><li><a href="http://pypi.python.org/pypi?:action=browse&amp;show=all&amp;c=512">buildout recipes</a> on pypi</li><br><br><h4>Disadvantages to buildout?</h4><br>You become dependant on a few things.  At least with buildout you become dependant on:<br><li>zc.buildout</li><li>setuptools</li><li>pypi.python.org website remaining up... it is fairly often down.</li><li>distutils - buildout requires a setup.py file.<br></li><br><br><br><h4>Who uses buildout?  How stable is it?  How portable is it?</h4><br>At the moment buildout is mostly used by zope, and other python web applications.<br><br>It's
+ a fairly recent project - first released mid 2006.  However it's a 3rd 
+generation buildout system used by the zope corporation - so it's got a 
+bunch of wisdom behind it.<br><br>Buildout seems to be stabilising... 
+that is the amount of changes to it seems to be slowing down.  There 
+seems to be about 37 bugs in the <a href="https://launchpad.net/zc.buildout/+bugs">buildout bug tracker</a>
+ as of writing(2008-05-01) - with 3 of the bugs marked fixed (at 
+2008-05-31 and still only 3 of the bugs marked fixed) - and a number of 
+bugs under discussion.<br><br>Documentation isn't the best (which is one reason I'm writing this post) - but there is at least a main manual, and a tutorial.<br><br>There
+ do seem to be quite a few doctest based tests that come with it - which
+ is one form of documentation in itself - but more documentation about 
+zc.buildout - rather than documentation for using zc.buildout.  There is
+ about 1400 lines of python in the tests, and about 3000 lines of 
+non-python code in the doctests (usually description about what the 
+tests are doing).<br><br>I'm not sure how portable buildout is.  The 
+last release (as of writing 1.0.1 (2008-04-02)), mentions windows fixes,
+ and was the last release for 3 months.  I know of people using it on 
+linux(suse, debian), and mac osx based machines. &nbsp;Update: a note in
+ the comments says it works fine on windows.</div></div>
+<div style="clear: both;"></div>
+</div>
+<div class="post-footer">
+<div class="post-footer-line post-footer-line-1"><span class="post-author vcard">
+Posted by
+<span class="fn">Rene Dudfield</span>
+</span>
+<span class="post-timestamp">
+at
+<a class="timestamp-link" href="http://renesd.blogspot.in/2008/05/buildout-tutorial-buildout-howto.html" rel="bookmark" title="permanent link"><abbr class="published" title="2008-05-31T10:36:00+01:00">10:36 AM</abbr></a>
+</span>
+<span class="post-comment-link">
+</span>
+<span class="post-icons">
+<span class="item-control blog-admin pid-503030116">
+<a href="http://www.blogger.com/post-edit.g?blogID=10678074&amp;postID=526488297513136824&amp;from=pencil" title="Edit Post">
+<img alt="" class="icon-action" src="buildout-tutorial-buildout-howto_files/icon18_edit_allbkg.gif" height="18" width="18">
+</a>
+</span>
+</span>
+</div>
+<div class="post-footer-line post-footer-line-2"><span class="post-labels">
+Labels:
+<a href="http://renesd.blogspot.in/search/label/buildout" rel="tag">buildout</a>,
+<a href="http://renesd.blogspot.in/search/label/howto" rel="tag">howto</a>,
+<a href="http://renesd.blogspot.in/search/label/python" rel="tag">python</a>,
+<a href="http://renesd.blogspot.in/search/label/tutorial" rel="tag">tutorial</a>
+</span>
+</div>
+<div class="post-footer-line post-footer-line-3"></div>
+</div>
+</div>
+<div class="comments" id="comments">
+<a name="comments"></a>
+<h4>3 comments:</h4>
+<div id="Blog1_comments-block-wrapper">
+<dl class="avatar-comment-indent" id="comments-block">
+<dt class="comment-author " id="c1605106552900797632">
+<a name="c1605106552900797632"></a>
+<div class="avatar-image-container avatar-stock"><span dir="ltr"><a href="http://www.blogger.com/profile/13983959953928892138" rel="nofollow" onclick="" class="avatar-hovercard" id="av-0-13983959953928892138"><img src="buildout-tutorial-buildout-howto_files/b16-rounded.gif" alt="" title="ajung" height="16" width="16">
+
+</a></span></div>
+<a href="http://www.blogger.com/profile/13983959953928892138" rel="nofollow">ajung</a>
+said...
+</dt>
+<dd class="comment-body" id="Blog1_cmt-1605106552900797632">
+<p>
+Buildout is running on all OSes<br>including Windows.
+</p>
+</dd>
+<dd class="comment-footer">
+<span class="comment-timestamp">
+<a href="http://renesd.blogspot.com/2008/05/buildout-tutorial-buildout-howto.html?showComment=1212219360000#c1605106552900797632" title="comment permalink">
+8:36 AM
+</a>
+<span class="item-control blog-admin pid-328079686">
+<a class="comment-delete" href="http://www.blogger.com/delete-comment.g?blogID=10678074&amp;postID=1605106552900797632" title="Delete Comment">
+<img src="buildout-tutorial-buildout-howto_files/icon_delete13.gif">
+</a>
+</span>
+</span>
+</dd>
+<dt class="comment-author " id="c8141750924984133228">
+<a name="c8141750924984133228"></a>
+<div class="avatar-image-container avatar-stock"><span dir="ltr"><a href="http://philikon.wordpress.com/" rel="nofollow" onclick="" class="avatar-hovercard" id="av-1-04071559847176790009"><img src="buildout-tutorial-buildout-howto_files/openid16-rounded.gif" alt="" title="philikon" height="16" width="16">
+
+</a></span></div>
+<a href="http://philikon.wordpress.com/" rel="nofollow">philikon</a>
+said...
+</dt>
+<dd class="comment-body" id="Blog1_cmt-8141750924984133228">
+<p>
+Actually, you'll never have to easy_install zc.buildout at all. That's 
+what bootstrap.py is for: it will download and set up zc.buildout 
+locally in your sandbox. That way the global Python installation is 
+never tainted. So what we usually do in Zope is we simply include a 
+buildout.cfg and a bootstrap.py in our sandboxes.<br><br>*If* you 
+easy_install zc.buildout anyway, then you don't need bootstrap.py. 
+Because then you have the 'buildout' executable available and can simply
+ do 'buildout bootstrap'.<br><br>Btw, PyPI has a listing of available 
+buildout recipes (the things that buildout calls to actually do the 
+work): 
+http://pypi.python.org/pypi?:action=browse&amp;show=all&amp;c=512. Some 
+are more generic than others...
+</p>
+</dd>
+<dd class="comment-footer">
+<span class="comment-timestamp">
+<a href="http://renesd.blogspot.com/2008/05/buildout-tutorial-buildout-howto.html?showComment=1212221520000#c8141750924984133228" title="comment permalink">
+9:12 AM
+</a>
+<span class="item-control blog-admin pid-692655775">
+<a class="comment-delete" href="http://www.blogger.com/delete-comment.g?blogID=10678074&amp;postID=8141750924984133228" title="Delete Comment">
+<img src="buildout-tutorial-buildout-howto_files/icon_delete13.gif">
+</a>
+</span>
+</span>
+</dd>
+<dt class="comment-author " id="c2541394764464452111">
+<a name="c2541394764464452111"></a>
+<div class="avatar-image-container avatar-stock"><span dir="ltr"><a href="http://www.blogger.com/profile/07215238154469269139" rel="nofollow" onclick="" class="avatar-hovercard" id="av-2-07215238154469269139"><img src="buildout-tutorial-buildout-howto_files/b16-rounded.gif" alt="" title="Chui Tey" height="16" width="16">
+
+</a></span></div>
+<a href="http://www.blogger.com/profile/07215238154469269139" rel="nofollow">Chui Tey</a>
+said...
+</dt>
+<dd class="comment-body" id="Blog1_cmt-2541394764464452111">
+<p>
+The new bootstrap.py is here: http://downloads.buildout.org/2/bootstrap.py
+</p>
+</dd>
+<dd class="comment-footer">
+<span class="comment-timestamp">
+<a href="http://renesd.blogspot.com/2008/05/buildout-tutorial-buildout-howto.html?showComment=1366955267060#c2541394764464452111" title="comment permalink">
+6:47 AM
+</a>
+<span class="item-control blog-admin pid-2110964755">
+<a class="comment-delete" href="http://www.blogger.com/delete-comment.g?blogID=10678074&amp;postID=2541394764464452111" title="Delete Comment">
+<img src="buildout-tutorial-buildout-howto_files/icon_delete13.gif">
+</a>
+</span>
+</span>
+</dd>
+</dl>
+</div>
+<p class="comment-footer">
+<a href="http://www.blogger.com/comment.g?blogID=10678074&amp;postID=526488297513136824" onclick="">Post a Comment</a>
+</p>
+<div id="backlinks-container">
+<div id="Blog1_backlinks-container">
+</div>
+</div>
+</div>
+<!-- google_ad_section_end -->
+</div>
+<div class="blog-pager" id="blog-pager">
+<span id="blog-pager-newer-link">
+<a class="blog-pager-newer-link" href="http://renesd.blogspot.in/2008/07/protocol-buffers-is-it-really-faster.html" id="Blog1_blog-pager-newer-link" title="Newer Post">Newer Post</a>
+</span>
+<span id="blog-pager-older-link">
+<a class="blog-pager-older-link" href="http://renesd.blogspot.in/2008/05/gsoc2008-and-pygame.html" id="Blog1_blog-pager-older-link" title="Older Post">Older Post</a>
+</span>
+<a class="home-link" href="http://renesd.blogspot.in/">Home</a>
+</div>
+<div class="clear"></div>
+<div class="post-feeds">
+<div class="feed-links">
+Subscribe to:
+<a class="feed-link" href="http://renesd.blogspot.com/feeds/526488297513136824/comments/default" target="_blank" type="application/atom+xml">Post Comments (Atom)</a>
+</div>
+</div>
+</div></div>
+</div>
+<div id="sidebar-wrapper">
+<div class="sidebar section" id="sidebar"><div class="widget LinkList" id="LinkList1">
+<h2>Websites and Links</h2>
+<div class="widget-content">
+<ul>
+<li><a href="http://twitter.com/renedudfield">http://twitter.com/renedudfield</a></li>
+<li><a href="http://rene.f0o.com/">http://rene.f0o.com/</a></li>
+<li><a href="http://pygame.org/">http://pygame.org/</a></li>
+</ul>
+<div class="clear"></div>
+<span class="widget-item-control">
+<span class="item-control blog-admin">
+<a class="quickedit" href="http://www.blogger.com/rearrange?blogID=10678074&amp;widgetType=LinkList&amp;widgetId=LinkList1&amp;action=editWidget&amp;sectionId=sidebar" onclick='return _WidgetManager._PopupConfig(document.getElementById("LinkList1"));' target="configLinkList1" title="Edit">
+<img alt="" src="buildout-tutorial-buildout-howto_files/icon18_wrench_allbkg.png" height="18" width="18">
+</a>
+</span>
+</span>
+<div class="clear"></div>
+</div>
+</div><div class="widget BlogArchive" id="BlogArchive1">
+<h2>Blog Archive</h2>
+<div class="widget-content">
+<div id="ArchiveList">
+<div id="BlogArchive1_ArchiveList">
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+          ►&nbsp;
+        
+</span>
+</a>
+<a class="post-count-link" href="http://renesd.blogspot.in/search?updated-min=2013-01-01T00:00:00Z&amp;updated-max=2014-01-01T00:00:00Z&amp;max-results=17">2013</a>
+<span class="post-count" dir="ltr">(17)</span>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+          ►&nbsp;
+        
+</span>
+</a>
+<a class="post-count-link" href="http://renesd.blogspot.in/2013_04_01_archive.html">April</a>
+<span class="post-count" dir="ltr">(17)</span>
+</li>
+</ul>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+          ►&nbsp;
+        
+</span>
+</a>
+<a class="post-count-link" href="http://renesd.blogspot.in/search?updated-min=2012-01-01T00:00:00Z&amp;updated-max=2013-01-01T00:00:00Z&amp;max-results=11">2012</a>
+<span class="post-count" dir="ltr">(11)</span>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+          ►&nbsp;
+        
+</span>
+</a>
+<a class="post-count-link" href="http://renesd.blogspot.in/2012_08_01_archive.html">August</a>
+<span class="post-count" dir="ltr">(2)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+          ►&nbsp;
+        
+</span>
+</a>
+<a class="post-count-link" href="http://renesd.blogspot.in/2012_07_01_archive.html">July</a>
+<span class="post-count" dir="ltr">(4)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+          ►&nbsp;
+        
+</span>
+</a>
+<a class="post-count-link" href="http://renesd.blogspot.in/2012_06_01_archive.html">June</a>
+<span class="post-count" dir="ltr">(4)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+          ►&nbsp;
+        
+</span>
+</a>
+<a class="post-count-link" href="http://renesd.blogspot.in/2012_02_01_archive.html">February</a>
+<span class="post-count" dir="ltr">(1)</span>
+</li>
+</ul>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+          ►&nbsp;
+        
+</span>
+</a>
+<a class="post-count-link" href="http://renesd.blogspot.in/search?updated-min=2011-01-01T00:00:00Z&amp;updated-max=2012-01-01T00:00:00Z&amp;max-results=40">2011</a>
+<span class="post-count" dir="ltr">(40)</span>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+          ►&nbsp;
+        
+</span>
+</a>
+<a class="post-count-link" href="http://renesd.blogspot.in/2011_12_01_archive.html">December</a>
+<span class="post-count" dir="ltr">(2)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+          ►&nbsp;
+        
+</span>
+</a>
+<a class="post-count-link" href="http://renesd.blogspot.in/2011_11_01_archive.html">November</a>
+<span class="post-count" dir="ltr">(2)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+          ►&nbsp;
+        
+</span>
+</a>
+<a class="post-count-link" href="http://renesd.blogspot.in/2011_10_01_archive.html">October</a>
+<span class="post-count" dir="ltr">(17)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+          ►&nbsp;
+        
+</span>
+</a>
+<a class="post-count-link" href="http://renesd.blogspot.in/2011_09_01_archive.html">September</a>
+<span class="post-count" dir="ltr">(3)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+          ►&nbsp;
+        
+</span>
+</a>
+<a class="post-count-link" href="http://renesd.blogspot.in/2011_08_01_archive.html">August</a>
+<span class="post-count" dir="ltr">(2)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+          ►&nbsp;
+        
+</span>
+</a>
+<a class="post-count-link" href="http://renesd.blogspot.in/2011_07_01_archive.html">July</a>
+<span class="post-count" dir="ltr">(3)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+          ►&nbsp;
+        
+</span>
+</a>
+<a class="post-count-link" href="http://renesd.blogspot.in/2011_06_01_archive.html">June</a>
+<span class="post-count" dir="ltr">(1)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+          ►&nbsp;
+        
+</span>
+</a>
+<a class="post-count-link" href="http://renesd.blogspot.in/2011_05_01_archive.html">May</a>
+<span class="post-count" dir="ltr">(1)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+          ►&nbsp;
+        
+</span>
+</a>
+<a class="post-count-link" href="http://renesd.blogspot.in/2011_04_01_archive.html">April</a>
+<span class="post-count" dir="ltr">(3)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+          ►&nbsp;
+        
+</span>
+</a>
+<a class="post-count-link" href="http://renesd.blogspot.in/2011_03_01_archive.html">March</a>
+<span class="post-count" dir="ltr">(2)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+          ►&nbsp;
+        
+</span>
+</a>
+<a class="post-count-link" href="http://renesd.blogspot.in/2011_02_01_archive.html">February</a>
+<span class="post-count" dir="ltr">(1)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+          ►&nbsp;
+        
+</span>
+</a>
+<a class="post-count-link" href="http://renesd.blogspot.in/2011_01_01_archive.html">January</a>
+<span class="post-count" dir="ltr">(3)</span>
+</li>
+</ul>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+          ►&nbsp;
+        
+</span>
+</a>
+<a class="post-count-link" href="http://renesd.blogspot.in/search?updated-min=2010-01-01T00:00:00Z&amp;updated-max=2011-01-01T00:00:00Z&amp;max-results=34">2010</a>
+<span class="post-count" dir="ltr">(34)</span>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+          ►&nbsp;
+        
+</span>
+</a>
+<a class="post-count-link" href="http://renesd.blogspot.in/2010_12_01_archive.html">December</a>
+<span class="post-count" dir="ltr">(1)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+          ►&nbsp;
+        
+</span>
+</a>
+<a class="post-count-link" href="http://renesd.blogspot.in/2010_10_01_archive.html">October</a>
+<span class="post-count" dir="ltr">(1)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+          ►&nbsp;
+        
+</span>
+</a>
+<a class="post-count-link" href="http://renesd.blogspot.in/2010_09_01_archive.html">September</a>
+<span class="post-count" dir="ltr">(2)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+          ►&nbsp;
+        
+</span>
+</a>
+<a class="post-count-link" href="http://renesd.blogspot.in/2010_08_01_archive.html">August</a>
+<span class="post-count" dir="ltr">(1)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+          ►&nbsp;
+        
+</span>
+</a>
+<a class="post-count-link" href="http://renesd.blogspot.in/2010_07_01_archive.html">July</a>
+<span class="post-count" dir="ltr">(1)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+          ►&nbsp;
+        
+</span>
+</a>
+<a class="post-count-link" href="http://renesd.blogspot.in/2010_06_01_archive.html">June</a>
+<span class="post-count" dir="ltr">(2)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+          ►&nbsp;
+        
+</span>
+</a>
+<a class="post-count-link" href="http://renesd.blogspot.in/2010_05_01_archive.html">May</a>
+<span class="post-count" dir="ltr">(1)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+          ►&nbsp;
+        
+</span>
+</a>
+<a class="post-count-link" href="http://renesd.blogspot.in/2010_04_01_archive.html">April</a>
+<span class="post-count" dir="ltr">(2)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+          ►&nbsp;
+        
+</span>
+</a>
+<a class="post-count-link" href="http://renesd.blogspot.in/2010_03_01_archive.html">March</a>
+<span class="post-count" dir="ltr">(7)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+          ►&nbsp;
+        
+</span>
+</a>
+<a class="post-count-link" href="http://renesd.blogspot.in/2010_02_01_archive.html">February</a>
+<span class="post-count" dir="ltr">(6)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+          ►&nbsp;
+        
+</span>
+</a>
+<a class="post-count-link" href="http://renesd.blogspot.in/2010_01_01_archive.html">January</a>
+<span class="post-count" dir="ltr">(10)</span>
+</li>
+</ul>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+          ►&nbsp;
+        
+</span>
+</a>
+<a class="post-count-link" href="http://renesd.blogspot.in/search?updated-min=2009-01-01T00:00:00Z&amp;updated-max=2010-01-01T00:00:00Z&amp;max-results=50">2009</a>
+<span class="post-count" dir="ltr">(58)</span>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+          ►&nbsp;
+        
+</span>
+</a>
+<a class="post-count-link" href="http://renesd.blogspot.in/2009_12_01_archive.html">December</a>
+<span class="post-count" dir="ltr">(12)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+          ►&nbsp;
+        
+</span>
+</a>
+<a class="post-count-link" href="http://renesd.blogspot.in/2009_11_01_archive.html">November</a>
+<span class="post-count" dir="ltr">(4)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+          ►&nbsp;
+        
+</span>
+</a>
+<a class="post-count-link" href="http://renesd.blogspot.in/2009_10_01_archive.html">October</a>
+<span class="post-count" dir="ltr">(3)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+          ►&nbsp;
+        
+</span>
+</a>
+<a class="post-count-link" href="http://renesd.blogspot.in/2009_09_01_archive.html">September</a>
+<span class="post-count" dir="ltr">(10)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+          ►&nbsp;
+        
+</span>
+</a>
+<a class="post-count-link" href="http://renesd.blogspot.in/2009_08_01_archive.html">August</a>
+<span class="post-count" dir="ltr">(8)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+          ►&nbsp;
+        
+</span>
+</a>
+<a class="post-count-link" href="http://renesd.blogspot.in/2009_07_01_archive.html">July</a>
+<span class="post-count" dir="ltr">(3)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+          ►&nbsp;
+        
+</span>
+</a>
+<a class="post-count-link" href="http://renesd.blogspot.in/2009_06_01_archive.html">June</a>
+<span class="post-count" dir="ltr">(1)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+          ►&nbsp;
+        
+</span>
+</a>
+<a class="post-count-link" href="http://renesd.blogspot.in/2009_05_01_archive.html">May</a>
+<span class="post-count" dir="ltr">(7)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+          ►&nbsp;
+        
+</span>
+</a>
+<a class="post-count-link" href="http://renesd.blogspot.in/2009_04_01_archive.html">April</a>
+<span class="post-count" dir="ltr">(2)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+          ►&nbsp;
+        
+</span>
+</a>
+<a class="post-count-link" href="http://renesd.blogspot.in/2009_03_01_archive.html">March</a>
+<span class="post-count" dir="ltr">(2)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+          ►&nbsp;
+        
+</span>
+</a>
+<a class="post-count-link" href="http://renesd.blogspot.in/2009_02_01_archive.html">February</a>
+<span class="post-count" dir="ltr">(3)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+          ►&nbsp;
+        
+</span>
+</a>
+<a class="post-count-link" href="http://renesd.blogspot.in/2009_01_01_archive.html">January</a>
+<span class="post-count" dir="ltr">(3)</span>
+</li>
+</ul>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate expanded">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy toggle-open">▼&nbsp;</span>
+</a>
+<a class="post-count-link" href="http://renesd.blogspot.in/search?updated-min=2008-01-01T00:00:00Z&amp;updated-max=2009-01-01T00:00:00Z&amp;max-results=32">2008</a>
+<span class="post-count" dir="ltr">(32)</span>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+          ►&nbsp;
+        
+</span>
+</a>
+<a class="post-count-link" href="http://renesd.blogspot.in/2008_12_01_archive.html">December</a>
+<span class="post-count" dir="ltr">(3)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+          ►&nbsp;
+        
+</span>
+</a>
+<a class="post-count-link" href="http://renesd.blogspot.in/2008_11_01_archive.html">November</a>
+<span class="post-count" dir="ltr">(2)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+          ►&nbsp;
+        
+</span>
+</a>
+<a class="post-count-link" href="http://renesd.blogspot.in/2008_10_01_archive.html">October</a>
+<span class="post-count" dir="ltr">(2)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+          ►&nbsp;
+        
+</span>
+</a>
+<a class="post-count-link" href="http://renesd.blogspot.in/2008_09_01_archive.html">September</a>
+<span class="post-count" dir="ltr">(2)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+          ►&nbsp;
+        
+</span>
+</a>
+<a class="post-count-link" href="http://renesd.blogspot.in/2008_08_01_archive.html">August</a>
+<span class="post-count" dir="ltr">(1)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+          ►&nbsp;
+        
+</span>
+</a>
+<a class="post-count-link" href="http://renesd.blogspot.in/2008_07_01_archive.html">July</a>
+<span class="post-count" dir="ltr">(8)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate expanded">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy toggle-open">▼&nbsp;</span>
+</a>
+<a class="post-count-link" href="http://renesd.blogspot.in/2008_05_01_archive.html">May</a>
+<span class="post-count" dir="ltr">(2)</span>
+<ul class="posts">
+<li><a href="http://renesd.blogspot.in/2008/05/buildout-tutorial-buildout-howto.html">buildout tutorial.  buildout howto.  buildout revi...</a></li>
+<li><a href="http://renesd.blogspot.in/2008/05/gsoc2008-and-pygame.html">gsoc2008 and pygame...</a></li>
+</ul>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+          ►&nbsp;
+        
+</span>
+</a>
+<a class="post-count-link" href="http://renesd.blogspot.in/2008_04_01_archive.html">April</a>
+<span class="post-count" dir="ltr">(5)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+          ►&nbsp;
+        
+</span>
+</a>
+<a class="post-count-link" href="http://renesd.blogspot.in/2008_03_01_archive.html">March</a>
+<span class="post-count" dir="ltr">(2)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+          ►&nbsp;
+        
+</span>
+</a>
+<a class="post-count-link" href="http://renesd.blogspot.in/2008_02_01_archive.html">February</a>
+<span class="post-count" dir="ltr">(4)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+          ►&nbsp;
+        
+</span>
+</a>
+<a class="post-count-link" href="http://renesd.blogspot.in/2008_01_01_archive.html">January</a>
+<span class="post-count" dir="ltr">(1)</span>
+</li>
+</ul>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+          ►&nbsp;
+        
+</span>
+</a>
+<a class="post-count-link" href="http://renesd.blogspot.in/search?updated-min=2007-01-01T00:00:00Z&amp;updated-max=2008-01-01T00:00:00Z&amp;max-results=49">2007</a>
+<span class="post-count" dir="ltr">(49)</span>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+          ►&nbsp;
+        
+</span>
+</a>
+<a class="post-count-link" href="http://renesd.blogspot.in/2007_12_01_archive.html">December</a>
+<span class="post-count" dir="ltr">(1)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+          ►&nbsp;
+        
+</span>
+</a>
+<a class="post-count-link" href="http://renesd.blogspot.in/2007_10_01_archive.html">October</a>
+<span class="post-count" dir="ltr">(4)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+          ►&nbsp;
+        
+</span>
+</a>
+<a class="post-count-link" href="http://renesd.blogspot.in/2007_09_01_archive.html">September</a>
+<span class="post-count" dir="ltr">(2)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+          ►&nbsp;
+        
+</span>
+</a>
+<a class="post-count-link" href="http://renesd.blogspot.in/2007_08_01_archive.html">August</a>
+<span class="post-count" dir="ltr">(10)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+          ►&nbsp;
+        
+</span>
+</a>
+<a class="post-count-link" href="http://renesd.blogspot.in/2007_07_01_archive.html">July</a>
+<span class="post-count" dir="ltr">(9)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+          ►&nbsp;
+        
+</span>
+</a>
+<a class="post-count-link" href="http://renesd.blogspot.in/2007_06_01_archive.html">June</a>
+<span class="post-count" dir="ltr">(5)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+          ►&nbsp;
+        
+</span>
+</a>
+<a class="post-count-link" href="http://renesd.blogspot.in/2007_05_01_archive.html">May</a>
+<span class="post-count" dir="ltr">(9)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+          ►&nbsp;
+        
+</span>
+</a>
+<a class="post-count-link" href="http://renesd.blogspot.in/2007_04_01_archive.html">April</a>
+<span class="post-count" dir="ltr">(2)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+          ►&nbsp;
+        
+</span>
+</a>
+<a class="post-count-link" href="http://renesd.blogspot.in/2007_03_01_archive.html">March</a>
+<span class="post-count" dir="ltr">(1)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+          ►&nbsp;
+        
+</span>
+</a>
+<a class="post-count-link" href="http://renesd.blogspot.in/2007_01_01_archive.html">January</a>
+<span class="post-count" dir="ltr">(6)</span>
+</li>
+</ul>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+          ►&nbsp;
+        
+</span>
+</a>
+<a class="post-count-link" href="http://renesd.blogspot.in/search?updated-min=2006-01-01T00:00:00Z&amp;updated-max=2007-01-01T00:00:00Z&amp;max-results=37">2006</a>
+<span class="post-count" dir="ltr">(37)</span>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+          ►&nbsp;
+        
+</span>
+</a>
+<a class="post-count-link" href="http://renesd.blogspot.in/2006_12_01_archive.html">December</a>
+<span class="post-count" dir="ltr">(3)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+          ►&nbsp;
+        
+</span>
+</a>
+<a class="post-count-link" href="http://renesd.blogspot.in/2006_11_01_archive.html">November</a>
+<span class="post-count" dir="ltr">(2)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+          ►&nbsp;
+        
+</span>
+</a>
+<a class="post-count-link" href="http://renesd.blogspot.in/2006_10_01_archive.html">October</a>
+<span class="post-count" dir="ltr">(3)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+          ►&nbsp;
+        
+</span>
+</a>
+<a class="post-count-link" href="http://renesd.blogspot.in/2006_09_01_archive.html">September</a>
+<span class="post-count" dir="ltr">(1)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+          ►&nbsp;
+        
+</span>
+</a>
+<a class="post-count-link" href="http://renesd.blogspot.in/2006_08_01_archive.html">August</a>
+<span class="post-count" dir="ltr">(5)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+          ►&nbsp;
+        
+</span>
+</a>
+<a class="post-count-link" href="http://renesd.blogspot.in/2006_07_01_archive.html">July</a>
+<span class="post-count" dir="ltr">(1)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+          ►&nbsp;
+        
+</span>
+</a>
+<a class="post-count-link" href="http://renesd.blogspot.in/2006_06_01_archive.html">June</a>
+<span class="post-count" dir="ltr">(4)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+          ►&nbsp;
+        
+</span>
+</a>
+<a class="post-count-link" href="http://renesd.blogspot.in/2006_05_01_archive.html">May</a>
+<span class="post-count" dir="ltr">(4)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+          ►&nbsp;
+        
+</span>
+</a>
+<a class="post-count-link" href="http://renesd.blogspot.in/2006_04_01_archive.html">April</a>
+<span class="post-count" dir="ltr">(4)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+          ►&nbsp;
+        
+</span>
+</a>
+<a class="post-count-link" href="http://renesd.blogspot.in/2006_03_01_archive.html">March</a>
+<span class="post-count" dir="ltr">(4)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+          ►&nbsp;
+        
+</span>
+</a>
+<a class="post-count-link" href="http://renesd.blogspot.in/2006_02_01_archive.html">February</a>
+<span class="post-count" dir="ltr">(4)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+          ►&nbsp;
+        
+</span>
+</a>
+<a class="post-count-link" href="http://renesd.blogspot.in/2006_01_01_archive.html">January</a>
+<span class="post-count" dir="ltr">(2)</span>
+</li>
+</ul>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+          ►&nbsp;
+        
+</span>
+</a>
+<a class="post-count-link" href="http://renesd.blogspot.in/search?updated-min=2005-01-01T00:00:00Z&amp;updated-max=2006-01-01T00:00:00Z&amp;max-results=14">2005</a>
+<span class="post-count" dir="ltr">(14)</span>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+          ►&nbsp;
+        
+</span>
+</a>
+<a class="post-count-link" href="http://renesd.blogspot.in/2005_12_01_archive.html">December</a>
+<span class="post-count" dir="ltr">(4)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+          ►&nbsp;
+        
+</span>
+</a>
+<a class="post-count-link" href="http://renesd.blogspot.in/2005_11_01_archive.html">November</a>
+<span class="post-count" dir="ltr">(3)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+          ►&nbsp;
+        
+</span>
+</a>
+<a class="post-count-link" href="http://renesd.blogspot.in/2005_10_01_archive.html">October</a>
+<span class="post-count" dir="ltr">(1)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+          ►&nbsp;
+        
+</span>
+</a>
+<a class="post-count-link" href="http://renesd.blogspot.in/2005_09_01_archive.html">September</a>
+<span class="post-count" dir="ltr">(1)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+          ►&nbsp;
+        
+</span>
+</a>
+<a class="post-count-link" href="http://renesd.blogspot.in/2005_08_01_archive.html">August</a>
+<span class="post-count" dir="ltr">(3)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+          ►&nbsp;
+        
+</span>
+</a>
+<a class="post-count-link" href="http://renesd.blogspot.in/2005_03_01_archive.html">March</a>
+<span class="post-count" dir="ltr">(1)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="javascript:void(0)">
+<span class="zippy">
+
+          ►&nbsp;
+        
+</span>
+</a>
+<a class="post-count-link" href="http://renesd.blogspot.in/2005_02_01_archive.html">February</a>
+<span class="post-count" dir="ltr">(1)</span>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="clear"></div>
+<span class="widget-item-control">
+<span class="item-control blog-admin">
+<a class="quickedit" href="http://www.blogger.com/rearrange?blogID=10678074&amp;widgetType=BlogArchive&amp;widgetId=BlogArchive1&amp;action=editWidget&amp;sectionId=sidebar" onclick='return _WidgetManager._PopupConfig(document.getElementById("BlogArchive1"));' target="configBlogArchive1" title="Edit">
+<img alt="" src="buildout-tutorial-buildout-howto_files/icon18_wrench_allbkg.png" height="18" width="18">
+</a>
+</span>
+</span>
+<div class="clear"></div>
+</div>
+</div><div class="widget HTML" id="HTML1">
+<h2 class="title">Friends with links</h2>
+<div class="widget-content">
+<a href="http://daniel.poweredbybees.com/">Daniel Jones</a>
+<br>
+<a href="http://www.daneash.com/">Dane Ash</a>
+<br>
+</div>
+<div class="clear"></div>
+<span class="widget-item-control">
+<span class="item-control blog-admin">
+<a class="quickedit" href="http://www.blogger.com/rearrange?blogID=10678074&amp;widgetType=HTML&amp;widgetId=HTML1&amp;action=editWidget&amp;sectionId=sidebar" onclick='return _WidgetManager._PopupConfig(document.getElementById("HTML1"));' target="configHTML1" title="Edit">
+<img alt="" src="buildout-tutorial-buildout-howto_files/icon18_wrench_allbkg.png" height="18" width="18">
+</a>
+</span>
+</span>
+<div class="clear"></div>
+</div><div class="widget Label" id="Label1">
+<h2>Labels</h2>
+<div class="widget-content cloud-label-widget-content">
+<span class="label-size label-size-5">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/python">python</a>
+</span>
+<span class="label-size label-size-4">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/pygame">pygame</a>
+</span>
+<span class="label-size label-size-4">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/games">games</a>
+</span>
+<span class="label-size label-size-4">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/web">web</a>
+</span>
+<span class="label-size label-size-4">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/javascript">javascript</a>
+</span>
+<span class="label-size label-size-3">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/app">app</a>
+</span>
+<span class="label-size label-size-3">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/ludumdare">ludumdare</a>
+</span>
+<span class="label-size label-size-3">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/making">making</a>
+</span>
+<span class="label-size label-size-3">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/website">website</a>
+</span>
+<span class="label-size label-size-3">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/arduino">arduino</a>
+</span>
+<span class="label-size label-size-3">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/cherrypy">cherrypy</a>
+</span>
+<span class="label-size label-size-3">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/py3k">py3k</a>
+</span>
+<span class="label-size label-size-3">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/python3">python3</a>
+</span>
+<span class="label-size label-size-2">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/chrome">chrome</a>
+</span>
+<span class="label-size label-size-2">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/linux">linux</a>
+</span>
+<span class="label-size label-size-2">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/pywebsite">pywebsite</a>
+</span>
+<span class="label-size label-size-2">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/art">art</a>
+</span>
+<span class="label-size label-size-2">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/google">google</a>
+</span>
+<span class="label-size label-size-2">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/london">london</a>
+</span>
+<span class="label-size label-size-2">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/review">review</a>
+</span>
+<span class="label-size label-size-2">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/testing">testing</a>
+</span>
+<span class="label-size label-size-2">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/ubuntu">ubuntu</a>
+</span>
+<span class="label-size label-size-2">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/europython">europython</a>
+</span>
+<span class="label-size label-size-2">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/music">music</a>
+</span>
+<span class="label-size label-size-2">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/nokia">nokia</a>
+</span>
+<span class="label-size label-size-2">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/templates">templates</a>
+</span>
+<span class="label-size label-size-2">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/android">android</a>
+</span>
+<span class="label-size label-size-2">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/audio">audio</a>
+</span>
+<span class="label-size label-size-2">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/bzr">bzr</a>
+</span>
+<span class="label-size label-size-2">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/css">css</a>
+</span>
+<span class="label-size label-size-2">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/git">git</a>
+</span>
+<span class="label-size label-size-2">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/intel">intel</a>
+</span>
+<span class="label-size label-size-2">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/jquery">jquery</a>
+</span>
+<span class="label-size label-size-2">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/laptop">laptop</a>
+</span>
+<span class="label-size label-size-2">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/opengl">opengl</a>
+</span>
+<span class="label-size label-size-2">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/parrot">parrot</a>
+</span>
+<span class="label-size label-size-2">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/pyweek">pyweek</a>
+</span>
+<span class="label-size label-size-2">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/shitjs">shitjs</a>
+</span>
+<span class="label-size label-size-2">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/sql">sql</a>
+</span>
+<span class="label-size label-size-2">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/xml">xml</a>
+</span>
+<span class="label-size label-size-2">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/SHA-1">SHA-1</a>
+</span>
+<span class="label-size label-size-2">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/bazaar">bazaar</a>
+</span>
+<span class="label-size label-size-2">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/berlin">berlin</a>
+</span>
+<span class="label-size label-size-2">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/bitbucket">bitbucket</a>
+</span>
+<span class="label-size label-size-2">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/buildout">buildout</a>
+</span>
+<span class="label-size label-size-2">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/design">design</a>
+</span>
+<span class="label-size label-size-2">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/drawing">drawing</a>
+</span>
+<span class="label-size label-size-2">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/flash">flash</a>
+</span>
+<span class="label-size label-size-2">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/html5">html5</a>
+</span>
+<span class="label-size label-size-2">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/js">js</a>
+</span>
+<span class="label-size label-size-2">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/language">language</a>
+</span>
+<span class="label-size label-size-2">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/launchpad">launchpad</a>
+</span>
+<span class="label-size label-size-2">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/midi">midi</a>
+</span>
+<span class="label-size label-size-2">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/mobile">mobile</a>
+</span>
+<span class="label-size label-size-2">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/numpy">numpy</a>
+</span>
+<span class="label-size label-size-2">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/orm">orm</a>
+</span>
+<span class="label-size label-size-2">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/osx">osx</a>
+</span>
+<span class="label-size label-size-2">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/painting">painting</a>
+</span>
+<span class="label-size label-size-2">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/perl">perl</a>
+</span>
+<span class="label-size label-size-2">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/phones">phones</a>
+</span>
+<span class="label-size label-size-2">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/pyconuk">pyconuk</a>
+</span>
+<span class="label-size label-size-2">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/pypy">pypy</a>
+</span>
+<span class="label-size label-size-2">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/pys60">pys60</a>
+</span>
+<span class="label-size label-size-2">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/raspberrypi">raspberrypi</a>
+</span>
+<span class="label-size label-size-2">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/recipe">recipe</a>
+</span>
+<span class="label-size label-size-2">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/security">security</a>
+</span>
+<span class="label-size label-size-2">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/sqlite">sqlite</a>
+</span>
+<span class="label-size label-size-2">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/ui">ui</a>
+</span>
+<span class="label-size label-size-2">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/unladenswallow">unladenswallow</a>
+</span>
+<span class="label-size label-size-2">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/url%20encoding">url encoding</a>
+</span>
+<span class="label-size label-size-2">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/zodb">zodb</a>
+</span>
+<span class="label-size label-size-1">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/DOM">DOM</a>
+</span>
+<span class="label-size label-size-1">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/GET">GET</a>
+</span>
+<span class="label-size label-size-1">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/HD">HD</a>
+</span>
+<span class="label-size label-size-1">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/POST">POST</a>
+</span>
+<span class="label-size label-size-1">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/Vietnamese">Vietnamese</a>
+</span>
+<span class="label-size label-size-1">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/actionscript">actionscript</a>
+</span>
+<span class="label-size label-size-1">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/advertising">advertising</a>
+</span>
+<span class="label-size label-size-1">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/alsa">alsa</a>
+</span>
+<span class="label-size label-size-1">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/apache">apache</a>
+</span>
+<span class="label-size label-size-1">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/api">api</a>
+</span>
+<span class="label-size label-size-1">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/apple">apple</a>
+</span>
+<span class="label-size label-size-1">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/asm">asm</a>
+</span>
+<span class="label-size label-size-1">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/backups">backups</a>
+</span>
+<span class="label-size label-size-1">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/bars%20beijing">bars beijing</a>
+</span>
+<span class="label-size label-size-1">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/batching">batching</a>
+</span>
+<span class="label-size label-size-1">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/blender">blender</a>
+</span>
+<span class="label-size label-size-1">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/blogging">blogging</a>
+</span>
+<span class="label-size label-size-1">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/book">book</a>
+</span>
+<span class="label-size label-size-1">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/bugs">bugs</a>
+</span>
+<span class="label-size label-size-1">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/bugzilla">bugzilla</a>
+</span>
+<span class="label-size label-size-1">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/camera">camera</a>
+</span>
+<span class="label-size label-size-1">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/cdb">cdb</a>
+</span>
+<span class="label-size label-size-1">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/cheeseshop">cheeseshop</a>
+</span>
+<span class="label-size label-size-1">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/clojure">clojure</a>
+</span>
+<span class="label-size label-size-1">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/cobra">cobra</a>
+</span>
+<span class="label-size label-size-1">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/coffee">coffee</a>
+</span>
+<span class="label-size label-size-1">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/compiz">compiz</a>
+</span>
+<span class="label-size label-size-1">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/craft">craft</a>
+</span>
+<span class="label-size label-size-1">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/crud">crud</a>
+</span>
+<span class="label-size label-size-1">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/ctypes">ctypes</a>
+</span>
+<span class="label-size label-size-1">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/cython">cython</a>
+</span>
+<span class="label-size label-size-1">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/daemontools">daemontools</a>
+</span>
+<span class="label-size label-size-1">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/database">database</a>
+</span>
+<span class="label-size label-size-1">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/dbus">dbus</a>
+</span>
+<span class="label-size label-size-1">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/decimal">decimal</a>
+</span>
+<span class="label-size label-size-1">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/dependencies">dependencies</a>
+</span>
+<span class="label-size label-size-1">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/desktop">desktop</a>
+</span>
+<span class="label-size label-size-1">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/dictionary">dictionary</a>
+</span>
+<span class="label-size label-size-1">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/distutils">distutils</a>
+</span>
+<span class="label-size label-size-1">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/dj">dj</a>
+</span>
+<span class="label-size label-size-1">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/django">django</a>
+</span>
+<span class="label-size label-size-1">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/dojo">dojo</a>
+</span>
+<span class="label-size label-size-1">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/duck%20typing">duck typing</a>
+</span>
+<span class="label-size label-size-1">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/firefox">firefox</a>
+</span>
+<span class="label-size label-size-1">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/food">food</a>
+</span>
+<span class="label-size label-size-1">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/fritzing">fritzing</a>
+</span>
+<span class="label-size label-size-1">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/gadgets">gadgets</a>
+</span>
+<span class="label-size label-size-1">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/galcon">galcon</a>
+</span>
+<span class="label-size label-size-1">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/genshi">genshi</a>
+</span>
+<span class="label-size label-size-1">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/glsl">glsl</a>
+</span>
+<span class="label-size label-size-1">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/goat">goat</a>
+</span>
+<span class="label-size label-size-1">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/gpu">gpu</a>
+</span>
+<span class="label-size label-size-1">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/graphing">graphing</a>
+</span>
+<span class="label-size label-size-1">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/gsoc2008">gsoc2008</a>
+</span>
+<span class="label-size label-size-1">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/gvim">gvim</a>
+</span>
+<span class="label-size label-size-1">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/hash">hash</a>
+</span>
+<span class="label-size label-size-1">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/hg">hg</a>
+</span>
+<span class="label-size label-size-1">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/hotmail">hotmail</a>
+</span>
+<span class="label-size label-size-1">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/howto">howto</a>
+</span>
+<span class="label-size label-size-1">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/http">http</a>
+</span>
+<span class="label-size label-size-1">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/internet">internet</a>
+</span>
+<span class="label-size label-size-1">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/iphone">iphone</a>
+</span>
+<span class="label-size label-size-1">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/ipv6">ipv6</a>
+</span>
+<span class="label-size label-size-1">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/ipython">ipython</a>
+</span>
+<span class="label-size label-size-1">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/jit">jit</a>
+</span>
+<span class="label-size label-size-1">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/joypad">joypad</a>
+</span>
+<span class="label-size label-size-1">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/jslint">jslint</a>
+</span>
+<span class="label-size label-size-1">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/json">json</a>
+</span>
+<span class="label-size label-size-1">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/llvm">llvm</a>
+</span>
+<span class="label-size label-size-1">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/love">love</a>
+</span>
+<span class="label-size label-size-1">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/lxml">lxml</a>
+</span>
+<span class="label-size label-size-1">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/mac">mac</a>
+</span>
+<span class="label-size label-size-1">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/melbourne">melbourne</a>
+</span>
+<span class="label-size label-size-1">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/microsoft">microsoft</a>
+</span>
+<span class="label-size label-size-1">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/midim%20python">midim python</a>
+</span>
+<span class="label-size label-size-1">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/multicore">multicore</a>
+</span>
+<span class="label-size label-size-1">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/nginx">nginx</a>
+</span>
+<span class="label-size label-size-1">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/ninja">ninja</a>
+</span>
+<span class="label-size label-size-1">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/node">node</a>
+</span>
+<span class="label-size label-size-1">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/nostalgia">nostalgia</a>
+</span>
+<span class="label-size label-size-1">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/packaging">packaging</a>
+</span>
+<span class="label-size label-size-1">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/parallel">parallel</a>
+</span>
+<span class="label-size label-size-1">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/php">php</a>
+</span>
+<span class="label-size label-size-1">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/pickle">pickle</a>
+</span>
+<span class="label-size label-size-1">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/play">play</a>
+</span>
+<span class="label-size label-size-1">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/projector">projector</a>
+</span>
+<span class="label-size label-size-1">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/protocol%20buffers">protocol buffers</a>
+</span>
+<span class="label-size label-size-1">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/pygame.">pygame.</a>
+</span>
+<span class="label-size label-size-1">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/pygamezine">pygamezine</a>
+</span>
+<span class="label-size label-size-1">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/pyopengl">pyopengl</a>
+</span>
+<span class="label-size label-size-1">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/pypi">pypi</a>
+</span>
+<span class="label-size label-size-1">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/randomshit">randomshit</a>
+</span>
+<span class="label-size label-size-1">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/retro">retro</a>
+</span>
+<span class="label-size label-size-1">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/rsi">rsi</a>
+</span>
+<span class="label-size label-size-1">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/s60">s60</a>
+</span>
+<span class="label-size label-size-1">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/samsung">samsung</a>
+</span>
+<span class="label-size label-size-1">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/screen">screen</a>
+</span>
+<span class="label-size label-size-1">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/setuptools">setuptools</a>
+</span>
+<span class="label-size label-size-1">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/short%20film">short film</a>
+</span>
+<span class="label-size label-size-1">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/sony">sony</a>
+</span>
+<span class="label-size label-size-1">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/sqlobject">sqlobject</a>
+</span>
+<span class="label-size label-size-1">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/ssl">ssl</a>
+</span>
+<span class="label-size label-size-1">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/store">store</a>
+</span>
+<span class="label-size label-size-1">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/svn">svn</a>
+</span>
+<span class="label-size label-size-1">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/switzerland">switzerland</a>
+</span>
+<span class="label-size label-size-1">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/teaching">teaching</a>
+</span>
+<span class="label-size label-size-1">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/teevee">teevee</a>
+</span>
+<span class="label-size label-size-1">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/terminal">terminal</a>
+</span>
+<span class="label-size label-size-1">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/the%20lonesome%20west">the lonesome west</a>
+</span>
+<span class="label-size label-size-1">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/theatre">theatre</a>
+</span>
+<span class="label-size label-size-1">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/threads">threads</a>
+</span>
+<span class="label-size label-size-1">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/thumbnails">thumbnails</a>
+</span>
+<span class="label-size label-size-1">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/tinypy">tinypy</a>
+</span>
+<span class="label-size label-size-1">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/tutorial">tutorial</a>
+</span>
+<span class="label-size label-size-1">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/ux">ux</a>
+</span>
+<span class="label-size label-size-1">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/vim">vim</a>
+</span>
+<span class="label-size label-size-1">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/vj">vj</a>
+</span>
+<span class="label-size label-size-1">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/wacom">wacom</a>
+</span>
+<span class="label-size label-size-1">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/webgl">webgl</a>
+</span>
+<span class="label-size label-size-1">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/wine">wine</a>
+</span>
+<span class="label-size label-size-1">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/wordnerd">wordnerd</a>
+</span>
+<span class="label-size label-size-1">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/wordpress">wordpress</a>
+</span>
+<span class="label-size label-size-1">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/wsgi">wsgi</a>
+</span>
+<span class="label-size label-size-1">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/xbox">xbox</a>
+</span>
+<span class="label-size label-size-1">
+<a dir="ltr" href="http://renesd.blogspot.in/search/label/zine">zine</a>
+</span>
+<div class="clear"></div>
+<span class="widget-item-control">
+<span class="item-control blog-admin">
+<a class="quickedit" href="http://www.blogger.com/rearrange?blogID=10678074&amp;widgetType=Label&amp;widgetId=Label1&amp;action=editWidget&amp;sectionId=sidebar" onclick='return _WidgetManager._PopupConfig(document.getElementById("Label1"));' target="configLabel1" title="Edit">
+<img alt="" src="buildout-tutorial-buildout-howto_files/icon18_wrench_allbkg.png" height="18" width="18">
+</a>
+</span>
+</span>
+<div class="clear"></div>
+</div>
+</div></div>
+</div>
+<!-- spacer for skins that want sidebar and main to be the same height-->
+<div class="clear">&nbsp;</div>
+</div>
+<!-- end content-wrapper -->
+<div id="footer-wrapper">
+<div class="footer section" id="footer"></div>
+</div>
+</div></div>
+<!-- end outer-wrapper -->
+<script type="text/javascript">
+if (window.jstiming) window.jstiming.load.tick('widgetJsBefore');
+</script><script type="text/javascript" src="buildout-tutorial-buildout-howto_files/4103944743-widgets.js"></script>
+<script gapi_processed="true" type="text/javascript" src="navbar_data/plusone.js"></script><iframe src="buildout-tutorial-buildout-howto_files/blank.html" style="height: 0px; width: 0px; position: absolute;" name="google_top_static_frame" id="google_top_static_frame" frameborder="0"></iframe>
+<script type="text/javascript">
+if (typeof(BLOG_attachCsiOnload) != 'undefined' && BLOG_attachCsiOnload != null) { window['blogger_templates_experiment_id'] = "templatesV1";window['blogger_blog_id'] = '10678074';BLOG_attachCsiOnload('item_'); }_WidgetManager._Init('//www.blogger.com/rearrange?blogID\x3d10678074','//renesd.blogspot.in/2008/05/buildout-tutorial-buildout-howto.html','10678074');
+_WidgetManager._SetDataContext([{'name': 'blog', 'data': {'blogId': '10678074', 'bloggerUrl': 'http://www.blogger.com', 'title': 'making apps, making webs.', 'pageType': 'item', 'url': 'http://renesd.blogspot.in/2008/05/buildout-tutorial-buildout-howto.html', 'canonicalUrl': 'http://renesd.blogspot.com/2008/05/buildout-tutorial-buildout-howto.html', 'canonicalHomepageUrl': 'http://renesd.blogspot.com/', 'homepageUrl': 'http://renesd.blogspot.in/', 'blogspotFaviconUrl': 'http://renesd.blogspot.in/favicon.ico', 'enabledCommentProfileImages': true, 'adultContent': false, 'disableAdSenseWidget': false, 'analyticsAccountNumber': '', 'searchLabel': '', 'searchQuery': '', 'pageName': 'buildout tutorial.  buildout howto.  buildout review.', 'pageTitle': 'making apps, making webs.: buildout tutorial.  buildout howto.  buildout review.', 'encoding': 'UTF-8', 'locale': 'en', 'localeUnderscoreDelimited': 'en', 'isPrivate': false, 'isMobile': false, 'isMobileRequest': false, 'mobileClass': '', 'isPrivateBlog': false, 'languageDirection': 'ltr', 'feedLinks': '\74link rel\75\42alternate\42 type\75\42application/atom+xml\42 title\75\42making apps, making webs. - Atom\42 href\75\42http://renesd.blogspot.com/feeds/posts/default\42 /\76\n\74link rel\75\42alternate\42 type\75\42application/rss+xml\42 title\75\42making apps, making webs. - RSS\42 href\75\42http://renesd.blogspot.com/feeds/posts/default?alt\75rss\42 /\76\n\74link rel\75\42service.post\42 type\75\42application/atom+xml\42 title\75\42making apps, making webs. - Atom\42 href\75\42http://www.blogger.com/feeds/10678074/posts/default\42 /\76\n\n\74link rel\75\42alternate\42 type\75\42application/atom+xml\42 title\75\42making apps, making webs. - Atom\42 href\75\42http://renesd.blogspot.com/feeds/526488297513136824/comments/default\42 /\76\n', 'meTag': '', 'openIdOpTag': '', 'googleProfileUrl': 'https://plus.google.com/113016169502668158732', 'imageSrcTag': '', 'latencyHeadScript': '\74script type\75\42text/javascript\42\76(function() { var b\75window,e\75\42jstiming\42,g\75\42tick\42;(function(){function d(a){this.t\75{};this.tick\75function(a,d,c){c\75void 0!\75c?c:(new Date).getTime();this.t[a]\75[c,d]};this[g](\42start\42,null,a)}var a\75new d;b.jstiming\75{Timer:d,load:a};if(b.performance\46\46b.performance.timing){var a\75b.performance.timing,c\75b[e].load,f\75a.navigationStart,a\75a.responseStart;0\74f\46\46a\76\75f\46\46(c[g](\42_wtsrt\42,void 0,f),c[g](\42wtsrt_\42,\42_wtsrt\42,a),c[g](\42tbsd_\42,\42wtsrt_\42))}try{a\75null,b.chrome\46\46b.chrome.csi\46\46(a\75Math.floor(b.chrome.csi().pageT),c\46\0460\74f\46\46(c[g](\42_tbnd\42,void 0,b.chrome.csi().startE),\nc[g](\42tbnd_\42,\42_tbnd\42,f))),null\75\75a\46\46b.gtbExternal\46\46(a\75b.gtbExternal.pageT()),null\75\75a\46\46b.external\46\46(a\75b.external.pageT,c\46\0460\74f\46\46(c[g](\42_tbnd\42,void 0,b.external.startE),c[g](\42tbnd_\42,\42_tbnd\42,f))),a\46\46(b[e].pt\75a)}catch(l){}})();b.tickAboveFold\75function(d){var a\0750;if(d.offsetParent){do a+\75d.offsetTop;while(d\75d.offsetParent)}d\75a;750\76\75d\46\46b[e].load[g](\42aft\42)};var h\75!1;function k(){h||(h\75!0,b[e].load[g](\42firstScrollTime\42))}b.addEventListener?b.addEventListener(\42scroll\42,k,!1):b.attachEvent(\42onscroll\42,k);\n })();\74/script\076', 'mobileHeadScript': '', 'view': '', 'dynamicViewsCommentsSrc': '//www.blogblog.com/dynamicviews/4224c15c4e7c9321/js/comments.js', 'dynamicViewsScriptSrc': '//www.blogblog.com/dynamicviews/15de8d1bfc9ff1d1', 'plusOneApiSrc': 'https://apis.google.com/js/plusone.js', 'testHtml5CssSrc': '//www.blogger.com/static/v1/widgets/2748914266-css_bundle_html5.css', 'sf': 'n', 'tf': ''}}, {'name': 'skin', 'data': {'vars': {'sidebartextcolor': '#666666', 'linkcolor': '#5588aa', 'visitedlinkcolor': '#999999', 'textcolor': '#333333', 'headerfont': 'normal normal 78% \47Trebuchet MS\47,Trebuchet,Arial,Verdana,Sans-serif', 'pagetitlefont': 'normal normal 200% Georgia, Serif', 'bgcolor': '#ffffff', 'descriptioncolor': '#999999', 'titlecolor': '#cc6600', 'bordercolor': '#cccccc', 'postfooterfont': 'normal normal 78% \47Trebuchet MS\47, Trebuchet, Arial, Verdana, Sans-serif', 'pagetitlecolor': '#666666', 'bodyfont': 'normal normal 100% Georgia, Serif', 'endSide': 'right', 'startSide': 'left', 'descriptionfont': 'normal normal 78% \47Trebuchet MS\47, Trebuchet, Arial, Verdana, Sans-serif', 'sidebarcolor': '#999999'}, 'override': ''}}, {'name': 'view', 'data': {'classic': {'name': 'classic', 'url': '/?view\75classic'}, 'flipcard': {'name': 'flipcard', 'url': '/?view\75flipcard'}, 'magazine': {'name': 'magazine', 'url': '/?view\75magazine'}, 'mosaic': {'name': 'mosaic', 'url': '/?view\75mosaic'}, 'sidebar': {'name': 'sidebar', 'url': '/?view\75sidebar'}, 'snapshot': {'name': 'snapshot', 'url': '/?view\75snapshot'}, 'timeslide': {'name': 'timeslide', 'url': '/?view\75timeslide'}}}]);
+_WidgetManager._RegisterWidget('_LinkListView', new _WidgetInfo('LinkList1', 'sidebar', null, document.getElementById('LinkList1'), {}, 'displayModeFull'));
+_WidgetManager._RegisterWidget('_BlogArchiveView', new _WidgetInfo('BlogArchive1', 'sidebar', null, document.getElementById('BlogArchive1'), {'languageDirection': 'ltr'}, 'displayModeFull'));
+_WidgetManager._RegisterWidget('_HTMLView', new _WidgetInfo('HTML1', 'sidebar', null, document.getElementById('HTML1'), {}, 'displayModeFull'));
+_WidgetManager._RegisterWidget('_LabelView', new _WidgetInfo('Label1', 'sidebar', null, document.getElementById('Label1'), {}, 'displayModeFull'));
+_WidgetManager._RegisterWidget('_HeaderView', new _WidgetInfo('Header1', 'header', null, document.getElementById('Header1'), {}, 'displayModeFull'));
+_WidgetManager._RegisterWidget('_NavbarView', new _WidgetInfo('Navbar1', 'navbar', null, document.getElementById('Navbar1'), {}, 'displayModeFull'));
+_WidgetManager._RegisterWidget('_BlogView', new _WidgetInfo('Blog1', 'main', null, document.getElementById('Blog1'), {'cmtInteractionsEnabled': false, 'lightboxEnabled': true, 'lightboxModuleUrl': '//www.blogger.com/static/v1/jsbin/4230258257-lbx.js', 'lightboxCssUrl': '//www.blogger.com/static/v1/v-css/4138445517-lightbox_bundle.css'}, 'displayModeFull'));
+_WidgetManager._RegisterWidget('_PageListView', new _WidgetInfo('PageList1', 'null', null, document.getElementById('PageList1'), {'title': 'Pages', 'links': [{'href': 'http://renesd.blogspot.in/', 'title': 'Home', 'isCurrentPage': false}], 'mobile': false}, 'displayModeFull'));
+</script>
+
+</body></html>
