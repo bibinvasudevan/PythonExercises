@@ -27,3 +27,5 @@ print squares	# [0, 1, 4, 9, 16, 25, 36, 49, 64, 81
 square = map(lambda x: x**2 ,range(10))
 evensquare = filter(lambda x: x % 2 == 0, square)
 print evensquare
+
+
